@@ -1,0 +1,5 @@
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+function addToCart(name,price,img){cart.push({name,price,img});localStorage.setItem("cart",JSON.stringify(cart));alert("Produit ajouté !");}
+function loadCart(){let container=document.getElementById("cart");let total=0;cart.forEach((item,i)=>{total+=item.price;container.innerHTML+=`<div class="cart-item"><img src="images/${item.img}" width="80"><h3>${item.name}</h3><p>${item.price} FCFA</p><button onclick="removeItem(${i})">Supprimer</button></div>`});document.getElementById("total").innerHTML="Total: "+total+" FCFA ≈ "+(total*0.00152).toFixed(2)+" €";}
+function removeItem(i){cart.splice(i,1);localStorage.setItem("cart",JSON.stringify(cart));location.reload();}
+let slides=document.querySelectorAll(".slide");let index=0;setInterval(()=>{slides[index].classList.remove("active");index=(index+1)%slides.length;slides[index].classList.add("active");},3000);

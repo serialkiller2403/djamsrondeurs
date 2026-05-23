@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Djam's Rondeur</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+  font-family: 'Playfair Display', serif;
+  margin:0;
+  background:#fff;
+  color:#111;
+}
+
+/* Header avec boutons */
+header {
+  background:#111;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+header .nav-btn {
+  background:#2E7D32;
+  color:white;
+  padding:12px 25px;
+  border:none;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+header .nav-btn:hover {
+  transform: translateY(-3px);
+  opacity:0.85;
+}
+
+/* Slider */
+.slider {
+  position:relative;
+  height:60vh;
+  overflow:hidden;
+}
+
+.slide {
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition: opacity 1s;
+}
+
+.slide.active {
+  opacity:1;
+}
+
+.overlay {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background: rgba(0,0,0,0.5);
+  color:white;
+  padding:25px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.btn {
+  background:#25D366;
+  color:white;
+  padding:15px 25px;
+  text-decoration:none;
+  border-radius:10px;
+  display:inline-block;
+  margin-top:10px;
+}
+
+.btn:hover {
+  opacity:0.9;
+}
+
+/* Paiements */
+.paiement {
+  text-align:center;
+  padding:30px 0;
+}
+
+.paiement-logos {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.paiement-logos img {
+  width:80px;
+  height:auto;
+}
+
+/* Footer */
+footer {
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:20px;
+}
+
+footer .social {
+  list-style:none;
+  padding:0;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:10px;
+}
+
+footer .social li a {
+  color:#25D366;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer p {
+  margin:0;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .slider{height:40vh;}
+  header{gap:15px;}
+  .paiement-logos img{width:60px;}
+}
+@media(max-width:480px){
+  .slider{height:30vh;}
+  header{flex-direction:column; gap:10px;}
+  .btn{padding:10px 20px;}
+  .paiement-logos img{width:50px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="nav-btn">Accueil</a>
+<a href="boutique.html" class="nav-btn">Boutique DJAM'S RONDEUR</a>
+<a href="panier.html" class="nav-btn">Panier</a>
+<a href="contact.html" class="nav-btn">Contact</a>
+</header>
+
+<!-- Slider 5 bannières -->
+<section class="slider">
+<img src="images/banner1.jpg" class="slide active" loading="lazy">
+<img src="images/banner2.jpg" class="slide" loading="lazy">
+<img src="images/banner3.jpg" class="slide" loading="lazy">
+<img src="images/banner4.jpg" class="slide" loading="lazy">
+<img src="images/banner5.jpg" class="slide" loading="lazy">
+
+<div class="overlay">
+<h2>Beauté & Bien-être</h2>
+<p>Produits naturels premium pour votre transformation</p>
+<a href="boutique.html" class="btn">Découvrir la boutique</a>
+</div>
+</section>
+
+<!-- Moyens de paiement avec images -->
+<section class="paiement">
+<h2>Moyens de paiement</h2>
+<div class="paiement-logos">
+<img src="images/wave.png" alt="Wave">
+<img src="images/orange-money.png" alt="Orange Money">
+<img src="images/mtn-money.png" alt="MTN Money">
+<img src="images/paypal.png" alt="PayPal">
+<img src="images/visa.png" alt="Visa">
+<img src="images/mastercard.png" alt="Mastercard">
+</div>
+</section>
+
+<!-- Footer Social -->
+<footer>
+<h3>Suivez-nous</h3>
+<ul class="social">
+<li><a href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=q" target="_blank">Instagram</a></li>
+<li><a href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI" target="_blank">Snapchat</a></li>
+</ul>
+<p>© 2026 Djam's Rondeur</p>
+</footer>
+
+<script>
+// Slider automatique
+let slides=document.querySelectorAll(".slide");
+let index=0;
+setInterval(()=>{
+  slides[index].classList.remove("active");
+  index=(index+1)%slides.length;
+  slides[index].classList.add("active");
+},3000);
+</script>
+
+</body>
+</html>

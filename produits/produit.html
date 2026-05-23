@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produit - Boutique DJAM'S RONDEUR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    font-family:'Playfair Display', serif;
+    margin:0;
+    background:#fff;
+    color:#111;
+}
+
+header{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+}
+
+.product{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    padding:30px;
+}
+
+.product img{
+    width:300px;
+    max-width:90%;
+    height:auto;
+    border-radius:10px;
+    object-fit:contain;
+    border:1px solid #ccc;
+}
+
+.product-details{
+    max-width:450px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.product-details h2{
+    color:#2E7D32;
+    margin:0;
+}
+
+.product-details p{
+    margin:5px 0;
+}
+
+/* QUANTITÉ */
+.quantity-control{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.quantity-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.quantity-btn{
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:5px;
+    background:#2E7D32;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.quantity-input{
+    width:60px;
+    text-align:center;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+/* BOUTONS */
+.action-btn{
+    background:#2E7D32;
+    color:white;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.action-btn:hover{
+    opacity:0.9;
+}
+
+/* FORMULAIRE LIVRAISON */
+.delivery-form{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    background:#f8f8f8;
+}
+
+.delivery-form h3{
+    color:#2E7D32;
+    margin-top:0;
+}
+
+.delivery-form input,
+.delivery-form textarea,
+.delivery-form select{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-family:'Playfair Display', serif;
+}
+
+a{
+    color:#25D366;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+    .product{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .product-details{
+        max-width:90%;
+    }
+}
+
+@media(max-width:480px){
+    .action-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Boutique DJAM'S RONDEUR</h1>
+</header>
+
+<section class="product">
+
+<img id="img" src="" alt="Produit">
+
+<div class="product-details">
+
+<h2 id="name"></h2>
+
+<p id="price"></p>
+
+<p id="euro"></p>
+
+<p id="description"></p>
+
+<!-- QUANTITÉ -->
+<div class="quantity-control">
+
+<label>Quantité :</label>
+
+<div class="quantity-box">
+
+<button class="quantity-btn" onclick="decreaseQty()">-</button>
+
+<input type="number" id="quantity" class="quantity-input" value="1" min="1">
+
+<button class="quantity-btn" onclick="increaseQty()">+</button>
+
+</div>
+
+</div>
+
+<!-- BOUTON PANIER -->
+<button class="action-btn" onclick="addToCart()">
+Ajouter au panier
+</button>
+
+<a href="../panier.html">Voir le panier</a>
+
+<!-- NOUVEAU BOUTON -->
+<button class="action-btn" onclick="showDeliveryForm()">
+Passer ma commande
+</button>
+
+<!-- FORMULAIRE LIVRAISON -->
+<div class="delivery-form" id="deliveryForm">
+
+<h3>Coordonnées de livraison</h3>
+
+<input type="text" id="fullname" placeholder="Nom complet" required>
+
+<input type="tel" id="phone" placeholder="Numéro de téléphone" required>
+
+<input type="email" id="email" placeholder="Adresse mail (optionnel)">
+
+<textarea id="address" placeholder="Adresse de livraison (quartier, commune, ville)" required></textarea>
+
+<select id="country">
+<option value="">Choisir un pays</option>
+<option>Côte d’Ivoire</option>
+<option>Sénégal</option>
+<option>Mali</option>
+<option>Burkina Faso</option>
+<option>Togo</option>
+<option>Bénin</option>
+<option>France</option>
+<option>Belgique</option>
+<option>Canada</option>
+</select>
+
+<button class="action-btn" onclick="goToPayment()">
+Voir le récapitulatif
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+// PARAMÈTRES URL
+const p = new URLSearchParams(window.location.search);
+
+let name = p.get("name");
+let price = parseInt(p.get("price"));
+let img = p.get("img");
+
+// AFFICHAGE
+document.getElementById("name").innerText = name;
+
+document.getElementById("price").innerText = price + " FCFA";
+
+document.getElementById("euro").innerText =
+"≈ " + (price * 0.00152).toFixed(2) + " €";
+
+document.getElementById("img").src = "../images/" + img;
+
+// DESCRIPTIONS
+const descriptions = {
+
+"CURE BOBI":"La CURE BOBI aide à raffermir et modeler votre silhouette naturellement.",
+
+"CURE BOOSTER BOBI":"CURE BOOSTER BOBI intensifie les effets de la CURE BOBI pour des résultats rapides.",
+
+"CURE AFRICA QUEEN":"CURE AFRICA QUEEN nourrit et hydrate votre peau tout en stimulant la rondeur naturelle.",
+
+"CURE MAMAMIYA":"CURE MAMAMIYA favorise la tonification et le bien-être général.",
+
+"CURE MAA-BIO":"CURE MAA-BIO est un traitement complet pour la silhouette et la santé de la peau.",
+
+"SUPPOSITOIRE BBL":"SUPPOSITOIRE BBL améliore le confort et l'hygiène intime tout en favorisant la tonicité.",
+
+"GÉLULE 100% HANCHES":"GÉLULE 100% HANCHES cible spécifiquement le volume des hanches de façon naturelle.",
+
+"CRÈME KABATO":"CRÈME KABATO hydrate et raffermit les zones ciblées de votre corps.",
+
+"SIROP TASSABA":"SIROP TASSABA favorise la santé générale et le bien-être.",
+
+"SIROP 3 EN 1":"SIROP 3 EN 1 combine plusieurs bénéfices pour la vitalité et l'énergie.",
+
+"SIROP TCHAPA BALAISE":"SIROP TCHAPA BALAISE est puissant pour renforcer la silhouette et l'énergie.",
+
+"SIROP APOUTCHOU":"SIROP APOUTCHOU stimule la digestion et l'équilibre du corps.",
+
+"GUMMIE BOBARABA":"GUMMIE BOBARABA favorise le développement des rondeurs de manière naturelle."
+};
+
+document.getElementById("description").innerText =
+descriptions[name] || "Produit premium pour votre beauté et bien-être.";
+
+// QUANTITÉ
+function getQuantity(){
+    return parseInt(document.getElementById("quantity").value) || 1;
+}
+
+function increaseQty(){
+    document.getElementById("quantity").value = getQuantity() + 1;
+}
+
+function decreaseQty(){
+    if(getQuantity() > 1){
+        document.getElementById("quantity").value =
+        getQuantity() - 1;
+    }
+}
+
+// PANIER
+function addToCart(){
+
+    const qty = getQuantity();
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existing = cart.find(item => item.name === name);
+
+    if(existing){
+        existing.qty += qty;
+    } else {
+        cart.push({
+            name:name,
+            price:price,
+            img:img,
+            qty:qty
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(qty + " " + name + " ajouté(s) au panier !");
+}
+
+// AFFICHER FORMULAIRE
+function showDeliveryForm(){
+
+    document.getElementById("deliveryForm").style.display = "block";
+
+}
+
+// REDIRECTION PAIEMENT
+function goToPayment(){
+
+    const fullname =
+    document.getElementById("fullname").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const address =
+    document.getElementById("address").value;
+
+    const country =
+    document.getElementById("country").value;
+
+    if(fullname === "" || phone === "" || address === "" || country === ""){
+
+        alert("Veuillez remplir tous les champs obligatoires.");
+
+        return;
+    }
+
+    const qty = getQuantity();
+
+    // SAUVEGARDE INFOS LIVRAISON
+    localStorage.setItem("deliveryInfo", JSON.stringify({
+        fullname,
+        phone,
+        email,
+        address,
+        country
+    }));
+
+    // AJOUT PANIER
+    addToCart();
+
+    // REDIRECTION
+    window.location.href =
+    "../paiement.html?name=" + encodeURIComponent(name)
+    + "&price=" + price
+    + "&img=" + encodeURIComponent(img)
+    + "&qty=" + qty;
+}
+
+</script>
+
+</body>
+</html>
