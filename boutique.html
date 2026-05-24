@@ -1,134 +1,324 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
-<title>Boutique DJAM'S RONDEUR</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Boutique - DJAM'S RONDEUR</title>
+
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Georgia, "Times New Roman", serif;
+}
+
+body{
+background:#fff;
+}
+
+header{
+background:#000;
+color:#fff;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+height:80px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 15px;
+font-size:18px;
+}
+
+.page-title{
+text-align:center;
+padding:40px;
+background:#f5f5f5;
+}
+
+.page-title h1{
+font-size:45px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:40px;
+}
+
+.product{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.product:hover{
+transform:translateY(-5px);
+}
+
+.product img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.product-content{
+padding:20px;
+text-align:center;
+}
+
+.product h3{
+margin-bottom:15px;
+font-size:22px;
+}
+
+.price{
+font-size:20px;
+font-weight:bold;
+color:#0b7d35;
+margin-bottom:10px;
+}
+
+.price-euro{
+color:#666;
+margin-bottom:20px;
+}
+
+.btn-panier,
+.btn-decouvrir{
+display:block;
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+cursor:pointer;
+font-size:16px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.btn-panier{
+background:#0b7d35;
+color:white;
+}
+
+.btn-decouvrir{
+background:#000;
+color:white;
+}
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+</style>
+
 </head>
+
 <body>
 
 <header>
-<h1>Boutique DJAM'S RONDEUR</h1>
+
+<img src="images/logo.jpg" class="logo" alt="Logo">
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="boutique.html">Boutique</a>
+<a href="panier.html">Panier</a>
+<a href="paiement.html">Paiement</a>
+</nav>
+
 </header>
+
+<section class="page-title">
+<h1>Notre Boutique</h1>
+<p>Découvrez nos produits exclusifs DJAM'S RONDEUR</p>
+</section>
 
 <section class="products">
 
-<!-- PRODUITS -->
-<div class="card">
-<img src="images/cure-bobi.jpg" loading="lazy">
+<!-- PRODUIT 1 -->
+<div class="product">
+<img src="images/produit1.jpg" alt="">
+<div class="product-content">
 <h3>CURE BOBI</h3>
-<p class="price" data-price="30000"></p>
-<button onclick="addToCart('CURE BOBI',30000,'cure-bobi.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=cure-bobi&price=30000&img=cure-bobi.jpg">Découvrir</a>
+<div class="price">30 000 FCFA</div>
+<div class="price-euro">≈ 45,73 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=1" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/cure-booster-bobi.jpg" loading="lazy">
+<!-- PRODUIT 2 -->
+<div class="product">
+<img src="images/produit2.jpg" alt="">
+<div class="product-content">
 <h3>CURE BOOSTER BOBI</h3>
-<p class="price" data-price="30000"></p>
-<button onclick="addToCart('CURE BOOSTER BOBI',30000,'cure-booster-bobi.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=cure-booster-bobi&price=30000&img=cure-booster-bobi.jpg">Découvrir</a>
+<div class="price">30 000 FCFA</div>
+<div class="price-euro">≈ 45,73 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=2" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/cure-africa-queen.jpg" loading="lazy">
+<!-- PRODUIT 3 -->
+<div class="product">
+<img src="images/produit3.jpg" alt="">
+<div class="product-content">
 <h3>CURE AFRICA QUEEN</h3>
-<p class="price" data-price="55000"></p>
-<button onclick="addToCart('CURE AFRICA QUEEN',55000,'cure-africa-queen.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=cure-africa-queen&price=55000&img=cure-africa-queen.jpg">Découvrir</a>
+<div class="price">55 000 FCFA</div>
+<div class="price-euro">≈ 83,85 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=3" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/cure-mamamiya.jpg" loading="lazy">
-<h3>CURE MAMAMIYA</h3>
-<p class="price" data-price="75000"></p>
-<button onclick="addToCart('CURE MAMAMIYA',75000,'cure-mamamiya.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=cure-mamamiya&price=75000&img=cure-mamamiya.jpg">Découvrir</a>
-</div>
-
-<div class="card">
-<img src="images/cure-maabio.jpg" loading="lazy">
-<h3>CURE MAA-BIO</h3>
-<p class="price" data-price="200000"></p>
-<button onclick="addToCart('CURE MAA-BIO',200000,'cure-maabio.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=cure-maabio&price=200000&img=cure-maabio.jpg">Découvrir</a>
-</div>
-
-<div class="card">
-<img src="images/suppositoire-bbl.jpg" loading="lazy">
+<!-- PRODUIT 4 -->
+<div class="product">
+<img src="images/produit4.jpg" alt="">
+<div class="product-content">
 <h3>SUPPOSITOIRE BBL</h3>
-<p class="price" data-price="50000"></p>
-<button onclick="addToCart('SUPPOSITOIRE BBL',50000,'suppositoire-bbl.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=suppositoire-bbl&price=50000&img=suppositoire-bbl.jpg">Découvrir</a>
+<div class="price">50 000 FCFA</div>
+<div class="price-euro">≈ 76,22 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=4" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/gelule-hanches.jpg" loading="lazy">
+<!-- PRODUIT 5 -->
+<div class="product">
+<img src="images/produit5.jpg" alt="">
+<div class="product-content">
 <h3>GÉLULE 100% HANCHES</h3>
-<p class="price" data-price="10000"></p>
-<button onclick="addToCart('GÉLULE 100% HANCHES',10000,'gelule-hanches.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=gelule-hanches&price=10000&img=gelule-hanches.jpg">Découvrir</a>
+<div class="price">10 000 FCFA</div>
+<div class="price-euro">≈ 15,24 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=5" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/creme-kabato.jpg" loading="lazy">
+<!-- PRODUIT 6 -->
+<div class="product">
+<img src="images/produit6.jpg" alt="">
+<div class="product-content">
 <h3>CRÈME KABATO</h3>
-<p class="price" data-price="5000"></p>
-<button onclick="addToCart('CRÈME KABATO',5000,'creme-kabato.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=creme-kabato&price=5000&img=creme-kabato.jpg">Découvrir</a>
+<div class="price">5 000 FCFA</div>
+<div class="price-euro">≈ 7,62 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=6" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/sirop-tassaba.jpg" loading="lazy">
+<!-- PRODUIT 7 -->
+<div class="product">
+<img src="images/produit7.jpg" alt="">
+<div class="product-content">
 <h3>SIROP TASSABA</h3>
-<p class="price" data-price="20000"></p>
-<button onclick="addToCart('SIROP TASSABA',20000,'sirop-tassaba.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=sirop-tassaba&price=20000&img=sirop-tassaba.jpg">Découvrir</a>
+<div class="price">20 000 FCFA</div>
+<div class="price-euro">≈ 30,49 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=7" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/sirop-3en1.jpg" loading="lazy">
+<!-- PRODUIT 8 -->
+<div class="product">
+<img src="images/produit8.jpg" alt="">
+<div class="product-content">
+<h3>CURE MAMAMIYA</h3>
+<div class="price">75 000 FCFA</div>
+<div class="price-euro">≈ 114,33 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=8" class="btn-decouvrir">Découvrir</a>
+</div>
+</div>
+
+<!-- PRODUIT 9 -->
+<div class="product">
+<img src="images/produit9.jpg" alt="">
+<div class="product-content">
 <h3>SIROP 3 EN 1</h3>
-<p class="price" data-price="30000"></p>
-<button onclick="addToCart('SIROP 3 EN 1',30000,'sirop-3en1.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=sirop-3en1&price=30000&img=sirop-3en1.jpg">Découvrir</a>
+<div class="price">30 000 FCFA</div>
+<div class="price-euro">≈ 45,73 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=9" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/sirop-tchapa.jpg" loading="lazy">
+<!-- PRODUIT 10 -->
+<div class="product">
+<img src="images/produit10.jpg" alt="">
+<div class="product-content">
 <h3>SIROP TCHAPA BALAISE</h3>
-<p class="price" data-price="65000"></p>
-<button onclick="addToCart('SIROP TCHAPA BALAISE',65000,'sirop-tchapa.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=sirop-tchapa&price=65000&img=sirop-tchapa.jpg">Découvrir</a>
+<div class="price">65 000 FCFA</div>
+<div class="price-euro">≈ 99,09 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=10" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/sirop-apoutchou.jpg" loading="lazy">
+<!-- PRODUIT 11 -->
+<div class="product">
+<img src="images/produit11.jpg" alt="">
+<div class="product-content">
 <h3>SIROP APOUTCHOU</h3>
-<p class="price" data-price="25000"></p>
-<button onclick="addToCart('SIROP APOUTCHOU',25000,'sirop-apoutchou.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=sirop-apoutchou&price=25000&img=sirop-apoutchou.jpg">Découvrir</a>
+<div class="price">25 000 FCFA</div>
+<div class="price-euro">≈ 38,11 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=11" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
-<div class="card">
-<img src="images/gummie-bobaraba.jpg" loading="lazy">
-<h3>GUMMIE BOBARABA</h3>
-<p class="price" data-price="25000"></p>
-<button onclick="addToCart('GUMMIE BOBARABA',25000,'gummie-bobaraba.jpg')">Ajouter</button>
-<a href="produits/produit.html?name=gummie-bobaraba&price=25000&img=gummie-bobaraba.jpg">Découvrir</a>
+<!-- PRODUIT 12 -->
+<div class="product">
+<img src="images/produit12.jpg" alt="">
+<div class="product-content">
+<h3>GUMMIE BOBARABA ORIGIGI</h3>
+<div class="price">25 000 FCFA</div>
+<div class="price-euro">≈ 38,11 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=12" class="btn-decouvrir">Découvrir</a>
+</div>
+</div>
+
+<!-- PRODUIT 13 -->
+<div class="product">
+<img src="images/produit13.jpg" alt="">
+<div class="product-content">
+<h3>CURE MAA-BIO</h3>
+<div class="price">200 000 FCFA</div>
+<div class="price-euro">≈ 304,90 €</div>
+<button class="btn-panier">🛒 Ajouter au panier</button>
+<a href="produits/produit.html?id=13" class="btn-decouvrir">Découvrir</a>
+</div>
 </div>
 
 </section>
 
+<footer>
+DJAM'S RONDEUR © 2025
+</footer>
+
 <script src="js/app.js"></script>
-<script>
-// Affichage des prix FCFA + EURO
-document.querySelectorAll(".price").forEach(el=>{
-  let price = parseInt(el.dataset.price);
-  let euro = (price * 0.00152).toFixed(2);
-  el.innerHTML = price + " FCFA<br>≈ " + euro + " €";
-});
-</script>
+
 </body>
 </html>

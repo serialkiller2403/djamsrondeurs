@@ -1,396 +1,402 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produit - Boutique DJAM'S RONDEUR</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Détail Produit - DJAM'S RONDEUR</title>
+
+<link rel="stylesheet" href="../css/style.css">
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Georgia,"Times New Roman",serif;
+}
+
 body{
-    font-family:'Playfair Display', serif;
-    margin:0;
-    background:#fff;
-    color:#111;
+background:#fff;
 }
 
 header{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:20px;
+background:#000;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-header h1{
-    margin:0;
+.logo{
+height:80px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:50px 20px;
 }
 
 .product{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:30px;
-    padding:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:start;
 }
 
-.product img{
-    width:300px;
-    max-width:90%;
-    height:auto;
-    border-radius:10px;
-    object-fit:contain;
-    border:1px solid #ccc;
+.product-image img{
+width:100%;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
-.product-details{
-    max-width:450px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+.product-info h1{
+font-size:42px;
+margin-bottom:15px;
 }
 
-.product-details h2{
-    color:#2E7D32;
-    margin:0;
+.price{
+font-size:30px;
+font-weight:bold;
+color:#0c7a36;
+margin-bottom:10px;
 }
 
-.product-details p{
-    margin:5px 0;
+.price-euro{
+font-size:22px;
+color:#666;
+margin-bottom:30px;
 }
 
-/* QUANTITÉ */
-.quantity-control{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
+.description{
+background:#f8f8f8;
+padding:25px;
+border-radius:10px;
+margin-bottom:30px;
 }
 
-.quantity-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.description h3{
+margin-bottom:15px;
 }
 
-.quantity-btn{
-    width:35px;
-    height:35px;
-    border:none;
-    border-radius:5px;
-    background:#2E7D32;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+.description p{
+line-height:1.8;
 }
 
-.quantity-input{
-    width:60px;
-    text-align:center;
-    padding:8px;
-    border:1px solid #ccc;
-    border-radius:5px;
-    font-size:16px;
+.quantity{
+display:flex;
+align-items:center;
+margin-bottom:30px;
 }
 
-/* BOUTONS */
-.action-btn{
-    background:#2E7D32;
-    color:white;
-    padding:12px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
+.quantity button{
+width:45px;
+height:45px;
+font-size:22px;
+border:none;
+background:#0c7a36;
+color:white;
+cursor:pointer;
 }
 
-.action-btn:hover{
-    opacity:0.9;
+.quantity input{
+width:80px;
+height:45px;
+text-align:center;
+font-size:18px;
+border:1px solid #ddd;
 }
 
-/* FORMULAIRE LIVRAISON */
-.delivery-form{
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    background:#f8f8f8;
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
 }
 
-.delivery-form h3{
-    color:#2E7D32;
-    margin-top:0;
+.actions button,
+.actions a{
+padding:15px 25px;
+border:none;
+text-decoration:none;
+cursor:pointer;
+border-radius:8px;
+font-size:16px;
 }
 
-.delivery-form input,
-.delivery-form textarea,
-.delivery-form select{
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    margin-bottom:15px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    font-family:'Playfair Display', serif;
+.add{
+background:#0c7a36;
+color:white;
 }
 
-a{
-    color:#25D366;
-    text-decoration:none;
-    font-weight:bold;
+.cart{
+background:#000;
+color:white;
 }
 
-@media(max-width:768px){
-    .product{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .product-details{
-        max-width:90%;
-    }
+.order{
+background:#d89d00;
+color:white;
 }
 
-@media(max-width:480px){
-    .action-btn{
-        width:100%;
-    }
+.social{
+margin-top:50px;
 }
+
+.social a{
+margin-right:15px;
+text-decoration:none;
+color:#0c7a36;
+font-weight:bold;
+}
+
+footer{
+margin-top:60px;
+background:#000;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@media(max-width:900px){
+
+.product{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-<h1>Boutique DJAM'S RONDEUR</h1>
+
+<img src="../images/logo.jpg" class="logo">
+
+<nav>
+<a href="../index.html">Accueil</a>
+<a href="../boutique.html">Boutique</a>
+<a href="../panier.html">Panier</a>
+</nav>
+
 </header>
 
-<section class="product">
+<div class="container">
 
-<img id="img" src="" alt="Produit">
+<div class="product">
 
-<div class="product-details">
+<div class="product-image">
 
-<h2 id="name"></h2>
-
-<p id="price"></p>
-
-<p id="euro"></p>
-
-<p id="description"></p>
-
-<!-- QUANTITÉ -->
-<div class="quantity-control">
-
-<label>Quantité :</label>
-
-<div class="quantity-box">
-
-<button class="quantity-btn" onclick="decreaseQty()">-</button>
-
-<input type="number" id="quantity" class="quantity-input" value="1" min="1">
-
-<button class="quantity-btn" onclick="increaseQty()">+</button>
+<img id="productImage" src="../images/produit1.jpg">
 
 </div>
 
+<div class="product-info">
+
+<h1 id="productName">Nom du produit</h1>
+
+<div class="price" id="productPrice"></div>
+
+<div class="price-euro" id="productEuro"></div>
+
+<div class="description">
+
+<h3>Description du produit</h3>
+
+<p id="productDescription">
+
+Description personnalisable du produit.
+
+Vous pourrez remplacer ce texte par les caractéristiques,
+les ingrédients, les conseils d'utilisation et les bénéfices
+réels du produit.
+
+</p>
+
 </div>
 
-<!-- BOUTON PANIER -->
-<button class="action-btn" onclick="addToCart()">
-Ajouter au panier
+<h3>Quantité</h3>
+
+<br>
+
+<div class="quantity">
+
+<button onclick="decrease()">−</button>
+
+<input type="text" id="qty" value="1" readonly>
+
+<button onclick="increase()">+</button>
+
+</div>
+
+<div class="actions">
+
+<button class="add">
+🛒 Ajouter au panier
 </button>
 
-<a href="../panier.html">Voir le panier</a>
+<a href="../panier.html" class="cart">
+Voir le panier
+</a>
 
-<!-- NOUVEAU BOUTON -->
-<button class="action-btn" onclick="showDeliveryForm()">
+<a href="../paiement.html" class="order">
 Passer ma commande
-</button>
+</a>
 
-<!-- FORMULAIRE LIVRAISON -->
-<div class="delivery-form" id="deliveryForm">
+</div>
 
-<h3>Coordonnées de livraison</h3>
+<div class="social">
 
-<input type="text" id="fullname" placeholder="Nom complet" required>
+<br>
 
-<input type="tel" id="phone" placeholder="Numéro de téléphone" required>
+<a href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=qr">
+Instagram
+</a>
 
-<input type="email" id="email" placeholder="Adresse mail (optionnel)">
-
-<textarea id="address" placeholder="Adresse de livraison (quartier, commune, ville)" required></textarea>
-
-<select id="country">
-<option value="">Choisir un pays</option>
-<option>Côte d’Ivoire</option>
-<option>Sénégal</option>
-<option>Mali</option>
-<option>Burkina Faso</option>
-<option>Togo</option>
-<option>Bénin</option>
-<option>France</option>
-<option>Belgique</option>
-<option>Canada</option>
-</select>
-
-<button class="action-btn" onclick="goToPayment()">
-Voir le récapitulatif
-</button>
+<a href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI">
+Snapchat
+</a>
 
 </div>
 
 </div>
 
-</section>
+</div>
+
+</div>
+
+<footer>
+
+DJAM'S RONDEUR © 2025
+
+</footer>
 
 <script>
 
-// PARAMÈTRES URL
-const p = new URLSearchParams(window.location.search);
+const products = {
 
-let name = p.get("name");
-let price = parseInt(p.get("price"));
-let img = p.get("img");
+1:{
+name:"CURE BOBI",
+price:"30 000 FCFA",
+euro:"≈ 45,73 €"
+},
 
-// AFFICHAGE
-document.getElementById("name").innerText = name;
+2:{
+name:"CURE BOOSTER BOBI",
+price:"30 000 FCFA",
+euro:"≈ 45,73 €"
+},
 
-document.getElementById("price").innerText = price + " FCFA";
+3:{
+name:"CURE AFRICA QUEEN",
+price:"55 000 FCFA",
+euro:"≈ 83,85 €"
+},
 
-document.getElementById("euro").innerText =
-"≈ " + (price * 0.00152).toFixed(2) + " €";
+4:{
+name:"SUPPOSITOIRE BBL",
+price:"50 000 FCFA",
+euro:"≈ 76,22 €"
+},
 
-document.getElementById("img").src = "../images/" + img;
+5:{
+name:"GÉLULE 100% HANCHES",
+price:"10 000 FCFA",
+euro:"≈ 15,24 €"
+},
 
-// DESCRIPTIONS
-const descriptions = {
+6:{
+name:"CRÈME KABATO",
+price:"5 000 FCFA",
+euro:"≈ 7,62 €"
+},
 
-"CURE BOBI":"La CURE BOBI aide à raffermir et modeler votre silhouette naturellement.",
+7:{
+name:"SIROP TASSABA",
+price:"20 000 FCFA",
+euro:"≈ 30,49 €"
+},
 
-"CURE BOOSTER BOBI":"CURE BOOSTER BOBI intensifie les effets de la CURE BOBI pour des résultats rapides.",
+8:{
+name:"CURE MAMAMIYA",
+price:"75 000 FCFA",
+euro:"≈ 114,33 €"
+},
 
-"CURE AFRICA QUEEN":"CURE AFRICA QUEEN nourrit et hydrate votre peau tout en stimulant la rondeur naturelle.",
+9:{
+name:"SIROP 3 EN 1",
+price:"30 000 FCFA",
+euro:"≈ 45,73 €"
+},
 
-"CURE MAMAMIYA":"CURE MAMAMIYA favorise la tonification et le bien-être général.",
+10:{
+name:"SIROP TCHAPA BALAISE",
+price:"65 000 FCFA",
+euro:"≈ 99,09 €"
+},
 
-"CURE MAA-BIO":"CURE MAA-BIO est un traitement complet pour la silhouette et la santé de la peau.",
+11:{
+name:"SIROP APOUTCHOU",
+price:"25 000 FCFA",
+euro:"≈ 38,11 €"
+},
 
-"SUPPOSITOIRE BBL":"SUPPOSITOIRE BBL améliore le confort et l'hygiène intime tout en favorisant la tonicité.",
+12:{
+name:"GUMMIE BOBARABA ORIGIGI",
+price:"25 000 FCFA",
+euro:"≈ 38,11 €"
+},
 
-"GÉLULE 100% HANCHES":"GÉLULE 100% HANCHES cible spécifiquement le volume des hanches de façon naturelle.",
+13:{
+name:"CURE MAA-BIO",
+price:"200 000 FCFA",
+euro:"≈ 304,90 €"
+}
 
-"CRÈME KABATO":"CRÈME KABATO hydrate et raffermit les zones ciblées de votre corps.",
-
-"SIROP TASSABA":"SIROP TASSABA favorise la santé générale et le bien-être.",
-
-"SIROP 3 EN 1":"SIROP 3 EN 1 combine plusieurs bénéfices pour la vitalité et l'énergie.",
-
-"SIROP TCHAPA BALAISE":"SIROP TCHAPA BALAISE est puissant pour renforcer la silhouette et l'énergie.",
-
-"SIROP APOUTCHOU":"SIROP APOUTCHOU stimule la digestion et l'équilibre du corps.",
-
-"GUMMIE BOBARABA":"GUMMIE BOBARABA favorise le développement des rondeurs de manière naturelle."
 };
 
-document.getElementById("description").innerText =
-descriptions[name] || "Produit premium pour votre beauté et bien-être.";
+const params = new URLSearchParams(window.location.search);
 
-// QUANTITÉ
-function getQuantity(){
-    return parseInt(document.getElementById("quantity").value) || 1;
-}
+const id = params.get("id") || 1;
 
-function increaseQty(){
-    document.getElementById("quantity").value = getQuantity() + 1;
-}
+const product = products[id];
 
-function decreaseQty(){
-    if(getQuantity() > 1){
-        document.getElementById("quantity").value =
-        getQuantity() - 1;
-    }
-}
+document.getElementById("productName").innerText = product.name;
+document.getElementById("productPrice").innerText = product.price;
+document.getElementById("productEuro").innerText = product.euro;
+document.getElementById("productImage").src = "../images/produit"+id+".jpg";
 
-// PANIER
-function addToCart(){
+function increase(){
 
-    const qty = getQuantity();
+let qty=document.getElementById("qty");
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    let existing = cart.find(item => item.name === name);
-
-    if(existing){
-        existing.qty += qty;
-    } else {
-        cart.push({
-            name:name,
-            price:price,
-            img:img,
-            qty:qty
-        });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    alert(qty + " " + name + " ajouté(s) au panier !");
-}
-
-// AFFICHER FORMULAIRE
-function showDeliveryForm(){
-
-    document.getElementById("deliveryForm").style.display = "block";
+qty.value=parseInt(qty.value)+1;
 
 }
 
-// REDIRECTION PAIEMENT
-function goToPayment(){
+function decrease(){
 
-    const fullname =
-    document.getElementById("fullname").value;
+let qty=document.getElementById("qty");
 
-    const phone =
-    document.getElementById("phone").value;
+if(parseInt(qty.value)>1){
 
-    const email =
-    document.getElementById("email").value;
+qty.value=parseInt(qty.value)-1;
 
-    const address =
-    document.getElementById("address").value;
+}
 
-    const country =
-    document.getElementById("country").value;
-
-    if(fullname === "" || phone === "" || address === "" || country === ""){
-
-        alert("Veuillez remplir tous les champs obligatoires.");
-
-        return;
-    }
-
-    const qty = getQuantity();
-
-    // SAUVEGARDE INFOS LIVRAISON
-    localStorage.setItem("deliveryInfo", JSON.stringify({
-        fullname,
-        phone,
-        email,
-        address,
-        country
-    }));
-
-    // AJOUT PANIER
-    addToCart();
-
-    // REDIRECTION
-    window.location.href =
-    "../paiement.html?name=" + encodeURIComponent(name)
-    + "&price=" + price
-    + "&img=" + encodeURIComponent(img)
-    + "&qty=" + qty;
 }
 
 </script>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration | DJAM'S RONDEUR</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Georgia,"Times New Roman",serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+background:#000;
+color:#fff;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+height:70px;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+h1,h2{
+margin-bottom:20px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+
+.btn-add{
+background:#0b7d35;
+color:white;
+}
+
+.btn-update{
+background:#d89400;
+color:white;
+}
+
+.btn-delete{
+background:#c90000;
+color:white;
+}
+
+.btn-edit{
+background:#000;
+color:white;
+}
+
+.search{
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+table th,
+table td{
+border:1px solid #ddd;
+padding:12px;
+text-align:center;
+}
+
+table th{
+background:#000;
+color:white;
+}
+
+.product-img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.preview{
+width:150px;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+border:1px solid #ddd;
+margin-top:15px;
+}
+
+footer{
+margin-top:40px;
+background:#000;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div>
+<h2>DJAM'S RONDEUR</h2>
+</div>
+
+<img src="images/logo.jpg" class="logo">
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Gestion des Produits</h1>
+
+<div class="form-grid">
+
+<input type="hidden" id="productId">
+
+<div>
+<label>Nom du produit</label>
+<input type="text" id="name">
+</div>
+
+<div>
+<label>Prix FCFA</label>
+<input type="number" id="price">
+</div>
+
+<div>
+<label>Image</label>
+<input type="text"
+id="image"
+placeholder="images/produit1.jpg">
+</div>
+
+</div>
+
+<br>
+
+<button class="btn-add" onclick="addProduct()">
+
+Ajouter Produit
+
+</button>
+
+<button class="btn-update" onclick="updateProduct()">
+
+Modifier Produit
+
+</button>
+
+<br><br>
+
+<img id="preview"
+class="preview"
+src="images/produit1.jpg">
+
+</div>
+
+<div class="card">
+
+<h2>Catalogue</h2>
+
+<input
+type="text"
+class="search"
+id="search"
+placeholder="Rechercher un produit..."
+onkeyup="searchProduct()">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Image</th>
+<th>Nom</th>
+<th>Prix FCFA</th>
+<th>Prix Euro</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="productTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<footer>
+
+DJAM'S RONDEUR © 2025
+
+</footer>
+
+<script>
+
+let products =
+JSON.parse(localStorage.getItem("products"))
+|| [
+
+{
+id:1,
+name:"CURE BOBI",
+price:30000,
+image:"images/produit1.jpg"
+},
+
+{
+id:2,
+name:"CURE BOOSTER BOBI",
+price:30000,
+image:"images/produit2.jpg"
+},
+
+{
+id:3,
+name:"CURE AFRICA QUEEN",
+price:55000,
+image:"images/produit3.jpg"
+},
+
+{
+id:4,
+name:"SUPPOSITOIRE BBL",
+price:50000,
+image:"images/produit4.jpg"
+},
+
+{
+id:5,
+name:"GÉLULE 100% HANCHES",
+price:10000,
+image:"images/produit5.jpg"
+},
+
+{
+id:6,
+name:"CRÈME KABATO",
+price:5000,
+image:"images/produit6.jpg"
+},
+
+{
+id:7,
+name:"SIROP TASSABA",
+price:20000,
+image:"images/produit7.jpg"
+},
+
+{
+id:8,
+name:"CURE MAMAMIYA",
+price:75000,
+image:"images/produit8.jpg"
+},
+
+{
+id:9,
+name:"SIROP 3 EN 1",
+price:30000,
+image:"images/produit9.jpg"
+},
+
+{
+id:10,
+name:"SIROP TCHAPA BALAISE",
+price:65000,
+image:"images/produit10.jpg"
+},
+
+{
+id:11,
+name:"SIROP APOUTCHOU",
+price:25000,
+image:"images/produit11.jpg"
+},
+
+{
+id:12,
+name:"GUMMIE BOBARABA ORIGIGI",
+price:25000,
+image:"images/produit12.jpg"
+},
+
+{
+id:13,
+name:"CURE MAA-BIO",
+price:200000,
+image:"images/produit13.jpg"
+}
+
+];
+
+function saveProducts(){
+
+localStorage.setItem(
+"products",
+JSON.stringify(products)
+);
+
+renderProducts();
+
+}
+
+function renderProducts(){
+
+let table =
+document.getElementById("productTable");
+
+table.innerHTML="";
+
+products.forEach(product=>{
+
+let euro =
+(product.price/655.957).toFixed(2);
+
+table.innerHTML += `
+
+<tr>
+
+<td>${product.id}</td>
+
+<td>
+<img src="${product.image}"
+class="product-img">
+</td>
+
+<td>${product.name}</td>
+
+<td>
+${product.price.toLocaleString()} FCFA
+</td>
+
+<td>${euro} €</td>
+
+<td>
+
+<button
+class="btn-edit"
+onclick="editProduct(${product.id})">
+
+Modifier
+
+</button>
+
+<button
+class="btn-delete"
+onclick="deleteProduct(${product.id})">
+
+Supprimer
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+function addProduct(){
+
+let name =
+document.getElementById("name").value;
+
+let price =
+document.getElementById("price").value;
+
+let image =
+document.getElementById("image").value;
+
+if(name==="" || price===""){
+
+alert("Veuillez remplir tous les champs");
+
+return;
+
+}
+
+products.push({
+
+id:Date.now(),
+
+name:name,
+
+price:Number(price),
+
+image:image
+
+});
+
+saveProducts();
+
+clearForm();
+
+}
+
+function editProduct(id){
+
+let product =
+products.find(p=>p.id===id);
+
+document.getElementById("productId").value=id;
+document.getElementById("name").value=product.name;
+document.getElementById("price").value=product.price;
+document.getElementById("image").value=product.image;
+
+document.getElementById("preview").src=
+product.image;
+
+}
+
+function updateProduct(){
+
+let id =
+Number(document.getElementById("productId").value);
+
+let product =
+products.find(p=>p.id===id);
+
+if(!product) return;
+
+product.name =
+document.getElementById("name").value;
+
+product.price =
+Number(document.getElementById("price").value);
+
+product.image =
+document.getElementById("image").value;
+
+saveProducts();
+
+clearForm();
+
+}
+
+function deleteProduct(id){
+
+if(confirm("Supprimer ce produit ?")){
+
+products =
+products.filter(p=>p.id!==id);
+
+saveProducts();
+
+}
+
+}
+
+function clearForm(){
+
+document.getElementById("productId").value="";
+document.getElementById("name").value="";
+document.getElementById("price").value="";
+document.getElementById("image").value="";
+
+}
+
+function searchProduct(){
+
+let search =
+document.getElementById("search")
+.value.toLowerCase();
+
+let rows =
+document.querySelectorAll("#productTable tr");
+
+rows.forEach(row=>{
+
+row.style.display =
+row.innerText.toLowerCase()
+.includes(search)
+
+? ""
+
+: "none";
+
+});
+
+}
+
+document
+.getElementById("image")
+.addEventListener("input",function(){
+
+document.getElementById("preview").src=
+this.value;
+
+});
+
+renderProducts();
+
+</script>
+
+</body>
+</html>

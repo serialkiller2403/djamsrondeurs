@@ -1,177 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paiement - Boutique DJAM'S RONDEUR</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Paiement | DJAM'S RONDEUR</title>
+
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 
-body{
-    font-family:'Playfair Display', serif;
-    margin:0;
-    background:#f5f5f5;
-    color:#111;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Georgia,"Times New Roman",serif;
 }
 
-/* HEADER */
+body{
+background:#f8f8f8;
+}
 
 header{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:20px;
+background:#000;
+color:#fff;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-header h1{
-    margin:0;
-    font-size:2rem;
+.logo{
+height:80px;
 }
 
-/* CONTAINER */
-
-.payment-container{
-    max-width:1000px;
-    margin:30px auto;
-    background:white;
-    border-radius:15px;
-    padding:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
 }
 
-/* TITRES */
-
-.section-title{
-    color:#2E7D32;
-    margin-bottom:20px;
-    border-bottom:2px solid #2E7D32;
-    padding-bottom:10px;
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
 }
 
-/* PRODUITS */
-
-.product-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    padding:15px 0;
-    border-bottom:1px solid #ddd;
+h1{
+margin-bottom:30px;
+text-align:center;
 }
 
-.product-left{
-    display:flex;
-    align-items:center;
-    gap:15px;
+.checkout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
 }
 
-.product-left img{
-    width:90px;
-    height:90px;
-    object-fit:contain;
-    border-radius:10px;
-    border:1px solid #ddd;
-    background:#fff;
+.form-box,
+.summary-box{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.product-name{
-    font-weight:bold;
-    color:#2E7D32;
+label{
+display:block;
+margin-top:15px;
+margin-bottom:5px;
+font-weight:bold;
 }
 
-.product-price{
-    font-size:15px;
+input,
+textarea,
+select{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
 }
 
-/* LIVRAISON */
-
-.delivery-info{
-    margin-top:30px;
-    background:#fafafa;
-    padding:20px;
-    border-radius:10px;
-    border:1px solid #ddd;
+textarea{
+resize:none;
+height:100px;
 }
-
-.delivery-info p{
-    margin:10px 0;
-}
-
-/* TOTAL */
-
-.total-box{
-    margin-top:30px;
-    padding:20px;
-    background:#2E7D32;
-    color:white;
-    border-radius:10px;
-    text-align:center;
-}
-
-.total-box h2{
-    margin:0;
-}
-
-/* PAIEMENT */
 
 .payment-methods{
-    margin-top:30px;
-    text-align:center;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
-.payment-logos{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:20px;
+.payment-card{
+border:2px solid #ddd;
+border-radius:10px;
+padding:15px;
+cursor:pointer;
+text-align:center;
+transition:.3s;
 }
 
-.payment-logos img{
-    width:80px;
-    height:auto;
-    object-fit:contain;
+.payment-card:hover{
+border-color:#0b7d35;
 }
 
-/* BOUTON */
-
-button{
-    width:100%;
-    margin-top:30px;
-    background:#111;
-    color:white;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
+.payment-card img{
+width:80px;
+height:auto;
+margin-bottom:10px;
 }
 
-button:hover{
-    background:#2E7D32;
+.total{
+font-size:30px;
+font-weight:bold;
+color:#0b7d35;
+margin:20px 0;
 }
 
-/* RESPONSIVE */
+.submit-btn{
+width:100%;
+padding:18px;
+background:#0b7d35;
+color:white;
+border:none;
+font-size:18px;
+cursor:pointer;
+border-radius:10px;
+margin-top:20px;
+}
 
-@media(max-width:768px){
+.submit-btn:hover{
+background:#09662c;
+}
 
-    .product-item{
-        flex-direction:column;
-        align-items:flex-start;
-    }
+.social{
+margin-top:30px;
+text-align:center;
+}
 
-    .payment-container{
-        margin:15px;
-        padding:20px;
-    }
+.social a{
+display:inline-block;
+margin:10px;
+padding:10px 20px;
+background:black;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
 
-    .payment-logos img{
-        width:60px;
-    }
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
+@media(max-width:900px){
+
+.checkout{
+grid-template-columns:1fr;
+}
 
 }
 
@@ -182,192 +176,219 @@ button:hover{
 <body>
 
 <header>
-<h1>Paiement - Boutique DJAM'S RONDEUR</h1>
+
+<img src="images/logo.jpg" class="logo">
+
+<nav>
+
+<a href="index.html">Accueil</a>
+<a href="boutique.html">Boutique</a>
+<a href="panier.html">Panier</a>
+
+</nav>
+
 </header>
 
-<div class="payment-container">
+<div class="container">
 
-<!-- PRODUITS -->
-<h2 class="section-title">Récapitulatif de votre commande</h2>
+<h1>Finaliser ma commande</h1>
 
-<div id="products"></div>
+<div class="checkout">
 
-<!-- LIVRAISON -->
-<div class="delivery-info">
+<!-- FORMULAIRE CLIENT -->
 
-<h2 class="section-title">Coordonnées de livraison</h2>
+<div class="form-box">
 
-<p><strong>Nom complet :</strong> <span id="fullname"></span></p>
+<h2>Informations client</h2>
 
-<p><strong>Téléphone :</strong> <span id="phone"></span></p>
+<form id="checkoutForm">
 
-<p><strong>Email :</strong> <span id="email"></span></p>
+<label>Nom complet</label>
+<input type="text" required>
 
-<p><strong>Adresse :</strong> <span id="address"></span></p>
+<label>Email</label>
+<input type="email" required>
 
-<p><strong>Pays :</strong> <span id="country"></span></p>
+<label>Téléphone WhatsApp</label>
+<input type="tel" required>
+
+<label>Pays</label>
+<input type="text" required>
+
+<label>Ville</label>
+<input type="text" required>
+
+<label>Adresse de livraison</label>
+<textarea required></textarea>
+
+<h2 style="margin-top:30px;">
+Choisir un moyen de paiement
+</h2>
+
+<div class="payment-methods">
+
+<label class="payment-card">
+<input type="radio"
+name="payment"
+value="Wave"
+required>
+<br><br>
+<img src="images/wave.png">
+<p>Wave</p>
+</label>
+
+<label class="payment-card">
+<input type="radio"
+name="payment"
+value="Orange Money">
+<br><br>
+<img src="images/orange-money.png">
+<p>Orange Money</p>
+</label>
+
+<label class="payment-card">
+<input type="radio"
+name="payment"
+value="PayPal">
+<br><br>
+<img src="images/paypal.png">
+<p>PayPal</p>
+</label>
+
+<label class="payment-card">
+<input type="radio"
+name="payment"
+value="Carte bancaire">
+<br><br>
+<img src="images/visa.png">
+<img src="images/mastercard.png">
+<p>Visa / Mastercard</p>
+</label>
 
 </div>
 
-<!-- TOTAL -->
-<div class="total-box">
+<button class="submit-btn" type="submit">
 
-<h2>
-Total Général :
-<span id="grand-total"></span> FCFA
-</h2>
+Valider ma commande
 
-<p>
-≈ <span id="grand-euro"></span> €
+</button>
+
+</form>
+
+</div>
+
+<!-- RESUME -->
+
+<div class="summary-box">
+
+<h2>Résumé de la commande</h2>
+
+<hr><br>
+
+<div id="cartSummary"></div>
+
+<hr><br>
+
+<p>Total à payer :</p>
+
+<div class="total" id="totalAmount">
+
+0 FCFA
+
+</div>
+
+<p id="totalEuro">
+
+0 €
+
 </p>
 
 </div>
 
-<!-- MOYENS DE PAIEMENT -->
+</div>
 
-<div class="payment-methods">
+<div class="social">
 
-<h2 class="section-title">
-Moyens de paiement acceptés
-</h2>
+<a href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=qr">
+Instagram
+</a>
 
-<div class="payment-logos">
-
-<img src="images/wave.png" alt="Wave">
-
-<img src="images/orange-money.png" alt="Orange Money">
-
-<img src="images/mtn-money.png" alt="MTN Money">
-
-<img src="images/paypal.png" alt="PayPal">
-
-<img src="images/visa.png" alt="Visa">
-
-<img src="images/mastercard.png" alt="Mastercard">
+<a href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI">
+Snapchat
+</a>
 
 </div>
 
 </div>
 
-<!-- BOUTON -->
-<button onclick="confirmPayment()">
-Confirmer le paiement
-</button>
+<footer>
 
-</div>
+DJAM'S RONDEUR © 2025
+
+</footer>
 
 <script>
 
-/* RÉCUPÉRATION PANIER */
+/* Lecture du panier */
 
 let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
 
-/* RÉCUPÉRATION LIVRAISON */
-
-let deliveryInfo =
-JSON.parse(localStorage.getItem("deliveryInfo")) || {};
-
-/* PRODUITS */
-
-let productsContainer =
-document.getElementById("products");
-
 let total = 0;
 
-cart.forEach(item => {
+let summary =
+document.getElementById("cartSummary");
 
-    let itemTotal =
-    item.price * item.qty;
+cart.forEach(item=>{
 
-    total += itemTotal;
+let subtotal =
+item.price * item.quantity;
 
-    productsContainer.innerHTML += `
+total += subtotal;
 
-    <div class="product-item">
+summary.innerHTML += `
+<p>
+${item.name}
+x ${item.quantity}
+<br>
+<strong>
+${subtotal.toLocaleString()} FCFA
+</strong>
+</p>
+<br>
+`;
 
-        <div class="product-left">
-
-            <img src="images/${item.img}" alt="${item.name}">
-
-            <div>
-
-                <div class="product-name">
-                ${item.name}
-                </div>
-
-                <div class="product-price">
-                ${item.price} FCFA
-                </div>
-
-                <div>
-                Quantité : ${item.qty}
-                </div>
-
-            </div>
-
-        </div>
-
-        <div>
-            <strong>${itemTotal} FCFA</strong>
-        </div>
-
-    </div>
-
-    `;
 });
 
-/* TOTAL */
+document.getElementById(
+"totalAmount"
+).innerText =
+total.toLocaleString()+" FCFA";
 
-document.getElementById("grand-total").innerText =
-total.toLocaleString();
+document.getElementById(
+"totalEuro"
+).innerText =
+(total/655.957).toFixed(2)+" €";
 
-document.getElementById("grand-euro").innerText =
-(total * 0.00152).toFixed(2);
+/* Validation */
 
-/* INFOS LIVRAISON */
+document
+.getElementById("checkoutForm")
+.addEventListener("submit",
 
-document.getElementById("fullname").innerText =
-deliveryInfo.fullname || "-";
+function(e){
 
-document.getElementById("phone").innerText =
-deliveryInfo.phone || "-";
+e.preventDefault();
 
-document.getElementById("email").innerText =
-deliveryInfo.email || "-";
+alert(
+"Merci pour votre commande chez DJAM'S RONDEUR.\n\nVotre demande a été enregistrée."
+);
 
-document.getElementById("address").innerText =
-deliveryInfo.address || "-";
+localStorage.removeItem("cart");
 
-document.getElementById("country").innerText =
-deliveryInfo.country || "-";
+window.location.href="index.html";
 
-/* CONFIRMATION */
-
-function confirmPayment(){
-
-    if(cart.length === 0){
-
-        alert("Votre panier est vide.");
-
-        return;
-    }
-
-    alert(
-        "Paiement confirmé ✅\n\n" +
-        "Merci pour votre commande chez DJAM'S RONDEUR."
-    );
-
-    /* VIDER PANIER */
-
-    localStorage.removeItem("cart");
-
-    localStorage.removeItem("deliveryInfo");
-
-    /* REDIRECTION */
-
-    window.location.href = "index.html";
-}
+});
 
 </script>
 
