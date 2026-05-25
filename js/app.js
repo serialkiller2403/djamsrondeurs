@@ -1,5 +1,5 @@
 /* ==========================================
-   DJAM'S RONDEUR
+   DJAM'S RONDEURS
    APP.JS
 ========================================== */
 
@@ -103,16 +103,33 @@ image:"images/produit13.jpg"
 };
 
 /* ==============================
-   LOCAL STORAGE
+   RECUPERER PANIER
 ============================== */
 
 function getCart(){
+
+try{
 
 return JSON.parse(
 localStorage.getItem("cart")
 ) || [];
 
+}catch(error){
+
+console.error(
+"Erreur panier :",
+error
+);
+
+return [];
+
 }
+
+}
+
+/* ==============================
+   SAUVEGARDER PANIER
+============================== */
 
 function saveCart(cart){
 
@@ -126,109 +143,19 @@ updateCartCounter();
 }
 
 /* ==============================
-   AJOUT PANIER
-============================== */
-
-function addToCart(productId){
-
-let cart = getCart();
-
-let product = products[productId];
-
-if(!product){
-
-console.error("Produit introuvable");
-
-return;
-
-}
-
-let existing = cart.find(
-item => item.id === productId
-);
-
-if(existing){
-
-existing.quantity++;
-
-}
-
-else{
-
-cart.push({
-
-id:product.id,
-name:product.name,
-price:product.price,
-quantity:1,
-image:product.image
-
-});
-
-}
-
-saveCart(cart);
-
-alert(
-product.name +
-" ajouté au panier."
-);
-
-}
-
-/* ==============================
-   AJOUT AVEC QUANTITE
-============================== */
-
-function addToCartWithQuantity(productId){
-
-let quantityField =
-document.getElementById("qty");
-
-let quantity =
-parseInt(quantityField.value);
-
-let cart = getCart();
-
-let product =
-products[productId];
-
-let existing =
-cart.find(item=>item.id===productId);
-
-if(existing){
-
-existing.quantity += quantity;
-
-}
-
-else{
-
-cart.push({
-
-id:product.id,
-name:product.name,
-price:product.price,
-quantity:quantity,
-image:product.image
-
-});
-
-}
-
-saveCart(cart);
-
-alert("Produit ajouté.");
-
-}
-
-/* ==============================
    COMPTEUR PANIER
 ============================== */
 
 function updateCartCounter(){
 
-let cart = getCart();
+const counter =
+document.getElementById(
+"cart-count"
+);
+
+if(!counter) return;
+
+const cart = getCart();
 
 let total = 0;
 
@@ -238,173 +165,87 @@ total += item.quantity;
 
 });
 
-let counter =
-document.getElementById("cart-count");
-
-if(counter){
-
 counter.innerText = total;
 
 }
 
-}
-
-document.addEventListener(
-"DOMContentLoaded",
-updateCartCounter
-);
-
 /* ==============================
-   AFFICHAGE PANIER
+   AJOUTER AU PANIER
 ============================== */
 
-function renderCart(){
+function addToCart(productId, quantity = 1){
 
-let container =
-document.getElementById(
-"cartContainer"
+const cart = getCart();
+
+const product =
+products[productId];
+
+if(!product){
+
+alert(
+"Produit introuvable"
 );
-
-if(!container) return;
-
-let cart = getCart();
-
-container.innerHTML="";
-
-if(cart.length===0){
-
-container.innerHTML=`
-
-<div class="empty-cart">
-
-Votre panier est vide.
-
-</div>
-
-`;
 
 return;
 
 }
 
-let total = 0;
+quantity = parseInt(quantity);
 
-cart.forEach((item,index)=>{
+if(isNaN(quantity) || quantity < 1){
 
-let subtotal =
-item.price * item.quantity;
+quantity = 1;
 
-total += subtotal;
+}
 
-container.innerHTML += `
+const existing =
+cart.find(item =>
+item.id === product.id
+);
 
-<div class="cart-item">
+if(existing){
 
-<img src="${item.image}" alt="">
+existing.quantity += quantity;
 
-<div class="cart-info">
+}else{
 
-<h3>${item.name}</h3>
+cart.push({
 
-<p>
-
-${item.price.toLocaleString()}
-FCFA
-
-</p>
-
-<div class="quantity-controls">
-
-<button
-onclick="decreaseQty(${index})">
-
--
-
-</button>
-
-<span>
-
-${item.quantity}
-
-</span>
-
-<button
-onclick="increaseQty(${index})">
-
-+
-
-</button>
-
-</div>
-
-<p>
-
-Sous-total :
-<strong>
-
-${subtotal.toLocaleString()}
-FCFA
-
-</strong>
-
-</p>
-
-</div>
-
-<button
-class="remove-btn"
-onclick="removeItem(${index})">
-
-Supprimer
-
-</button>
-
-</div>
-
-`;
+id:product.id,
+name:product.name,
+price:product.price,
+image:product.image,
+quantity:quantity
 
 });
 
-updateTotals(total);
+}
+
+saveCart(cart);
+
+alert(
+product.name +
+" ajouté au panier ✅"
+);
 
 }
 
 /* ==============================
-   TOTALS
+   SUPPRIMER PRODUIT
 ============================== */
 
-function updateTotals(total){
+function removeItem(index){
 
-let totalFcfa =
-document.getElementById(
-"totalFcfa"
-);
+let cart = getCart();
 
-let totalEuro =
-document.getElementById(
-"totalEuro"
-);
+cart.splice(index,1);
 
-if(totalFcfa){
-
-totalFcfa.innerText =
-total.toLocaleString()
-+" FCFA";
-
-}
-
-if(totalEuro){
-
-totalEuro.innerText =
-(total/655.957).toFixed(2)
-+" €";
-
-}
+saveCart(cart);
 
 }
 
 /* ==============================
-   QUANTITES
+   AUGMENTER QUANTITE
 ============================== */
 
 function increaseQty(index){
@@ -415,136 +256,90 @@ cart[index].quantity++;
 
 saveCart(cart);
 
-renderCart();
-
 }
+
+/* ==============================
+   DIMINUER QUANTITE
+============================== */
 
 function decreaseQty(index){
 
 let cart = getCart();
 
-if(cart[index].quantity>1){
+if(cart[index].quantity > 1){
 
 cart[index].quantity--;
 
 saveCart(cart);
 
-renderCart();
-
 }
 
 }
 
-function removeItem(index){
-
-let cart = getCart();
-
-cart.splice(index,1);
-
-saveCart(cart);
-
-renderCart();
-
-}
+/* ==============================
+   VIDER PANIER
+============================== */
 
 function clearCart(){
 
 if(confirm(
-"Vider complètement le panier ?"
+"Voulez-vous vider le panier ?"
 )){
 
-localStorage.removeItem("cart");
-
-renderCart();
+localStorage.removeItem(
+"cart"
+);
 
 updateCartCounter();
 
-}
-
-}
-
-/* ==============================
-   DETAIL PRODUIT
-============================== */
-
-function increase(){
-
-let qty =
-document.getElementById("qty");
-
-qty.value =
-parseInt(qty.value)+1;
-
-}
-
-function decrease(){
-
-let qty =
-document.getElementById("qty");
-
-if(parseInt(qty.value)>1){
-
-qty.value =
-parseInt(qty.value)-1;
+location.reload();
 
 }
 
 }
 
 /* ==============================
-   RESUME COMMANDE
+   TOTAL PANIER
 ============================== */
 
-function renderCheckoutSummary(){
+function calculateTotal(){
 
-let summary =
-document.getElementById(
-"cartSummary"
-);
-
-if(!summary) return;
-
-let cart = getCart();
+const cart = getCart();
 
 let total = 0;
 
-summary.innerHTML="";
-
 cart.forEach(item=>{
 
-let subtotal =
+total +=
 item.price * item.quantity;
-
-total += subtotal;
-
-summary.innerHTML += `
-
-<div class="checkout-item">
-
-<p>
-
-${item.name}
-
-x ${item.quantity}
-
-</p>
-
-<strong>
-
-${subtotal.toLocaleString()}
-FCFA
-
-</strong>
-
-</div>
-
-<hr>
-
-`;
 
 });
 
-updateTotals(total);
+return total;
+
+}
+
+/* ==============================
+   FORMAT FCFA
+============================== */
+
+function formatFcfa(price){
+
+return price.toLocaleString()
++ " FCFA";
+
+}
+
+/* ==============================
+   FORMAT EURO
+============================== */
+
+function formatEuro(price){
+
+return "≈ " +
+(price / 655.957)
+.toFixed(2)
++ " €";
 
 }
 
@@ -554,55 +349,17 @@ updateTotals(total);
 
 function generateOrderNumber(){
 
-let date = Date.now();
+const date = Date.now();
 
-let random =
+const random =
 Math.floor(
-Math.random()*10000
+Math.random() * 10000
 );
 
-return "DJR-"+
-date+
-"-"+
+return "DJR-" +
+date +
+"-" +
 random;
-
-}
-
-/* ==============================
-   ENVOI COMMANDE
-============================== */
-
-function submitOrder(){
-
-let cart = getCart();
-
-if(cart.length===0){
-
-alert(
-"Votre panier est vide."
-);
-
-return;
-
-}
-
-let orderNumber =
-generateOrderNumber();
-
-alert(
-
-"Commande validée !\n\n"+
-"Référence : "+
-orderNumber
-
-);
-
-localStorage.removeItem(
-"cart"
-);
-
-window.location.href=
-"index.html";
 
 }
 
@@ -612,11 +369,7 @@ window.location.href=
 
 document.addEventListener(
 "DOMContentLoaded",
-()=>{
-
-renderCart();
-
-renderCheckoutSummary();
+function(){
 
 updateCartCounter();
 
