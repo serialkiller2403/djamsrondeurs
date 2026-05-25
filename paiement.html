@@ -2,257 +2,113 @@
 <html lang="fr">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Paiement | DJAM'S RONDEURS</title>
 
-<title>
-Paiement | DJAM'S RONDEURS
-</title>
+<meta name="description" content="Finaliser votre commande DJAM'S RONDEURS">
 
-<meta name="description"
-content="Finaliser votre commande DJAM'S RONDEURS">
-
-<link rel="stylesheet"
-href="css/style.css">
-
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- =========================
-HEADER
-========================= -->
-
+<!-- HEADER -->
 <header>
 
-<img
-src="images/logo.jpg"
-class="logo"
-alt="DJAM'S RONDEURS">
+<img src="images/logo.jpg" class="logo" alt="DJAM'S RONDEURS">
 
 <nav>
-
-<a href="index.html">
-Accueil
-</a>
-
-<a href="boutique.html">
-Boutique
-</a>
+<a href="index.html">Accueil</a>
+<a href="boutique.html">Boutique</a>
 
 <a href="panier.html">
-
-🛒 Panier
-(<span id="cart-count">0</span>)
-
+🛒 Panier (<span id="cart-count">0</span>)
 </a>
 
-<a href="paiement.html">
-Paiement
-</a>
-
+<a href="paiement.html">Paiement</a>
 </nav>
 
 </header>
 
-<!-- =========================
-CHECKOUT
-========================= -->
+<!-- CHECKOUT -->
+<section style="max-width:1300px;margin:auto;padding:60px 20px;">
 
-<section
-style="
-max-width:1300px;
-margin:auto;
-padding:60px 20px;
-">
-
-<h1
-style="
-text-align:center;
-margin-bottom:50px;
-">
-
+<h1 style="text-align:center;margin-bottom:50px;">
 Finaliser ma commande
-
 </h1>
 
-<div
-style="
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
-">
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:30px;">
 
-<!-- =========================
-FORMULAIRE
-========================= -->
-
+<!-- FORM -->
 <div class="summary">
 
-<h2>
-Informations client
-</h2>
-
+<h2>Informations client</h2>
 <br>
 
 <form id="checkoutForm">
 
-<label>
-Nom complet
-</label>
-
-<input
-type="text"
-id="fullname"
-required>
-
+<label>Nom complet</label>
+<input type="text" id="fullname" required>
 <br><br>
 
-<label>
-Téléphone WhatsApp
-</label>
-
-<input
-type="tel"
-id="phone"
-required>
-
+<label>Téléphone</label>
+<input type="tel" id="phone" required>
 <br><br>
 
-<label>
-Email
-</label>
-
-<input
-type="email"
-id="email"
-required>
-
+<label>Email</label>
+<input type="email" id="email" required>
 <br><br>
 
-<label>
-Pays
-</label>
-
-<input
-type="text"
-id="country"
-required>
-
+<label>Pays</label>
+<input type="text" id="country" required>
 <br><br>
 
-<label>
-Ville
-</label>
-
-<input
-type="text"
-id="city"
-required>
-
+<label>Ville</label>
+<input type="text" id="city" required>
 <br><br>
 
-<label>
-Adresse complète
-</label>
-
-<textarea
-id="address"
-required></textarea>
-
+<label>Adresse</label>
+<textarea id="address" required></textarea>
 <br><br>
 
-<label>
-Moyen de paiement
-</label>
+<label>Moyen de paiement</label>
 
-<select
-id="paymentMethod"
-required>
-
-<option value="">
-Choisir
-</option>
-
-<option value="Wave">
-Wave
-</option>
-
-<option value="Orange Money">
-Orange Money
-</option>
-
-<option value="PayPal">
-PayPal
-</option>
-
-<option value="Carte bancaire">
-Carte bancaire
-</option>
-
+<select id="paymentMethod" required>
+<option value="">Choisir</option>
+<option value="Wave">Wave</option>
+<option value="Orange Money">Orange Money</option>
+<option value="PayPal">PayPal</option>
+<option value="Carte bancaire">Carte bancaire</option>
 </select>
 
 <br><br>
 
-<button
-type="submit"
-class="btn btn-primary"
-style="
-width:100%;
-padding:18px;
-font-size:18px;
-">
-
+<button type="submit" class="btn btn-primary"
+style="width:100%;padding:18px;font-size:18px;">
 Valider ma commande
-
 </button>
 
 </form>
 
 </div>
 
-<!-- =========================
-RESUME
-========================= -->
-
+<!-- RESUME -->
 <div class="summary">
 
-<h2>
-Résumé de commande
-</h2>
-
+<h2>Résumé de commande</h2>
 <br>
 
-<div id="cartSummary">
-
-</div>
+<div id="cartSummary"></div>
 
 <hr>
-
 <br>
 
-<p>
-Total à payer
-</p>
+<p>Total à payer</p>
 
-<div
-class="total"
-id="totalFcfa">
-
-0 FCFA
-
-</div>
-
-<div
-class="price-euro"
-id="totalEuro">
-
-0 €
-
-</div>
+<div class="total" id="totalFcfa">0 FCFA</div>
+<div class="price-euro" id="totalEuro">0 €</div>
 
 </div>
 
@@ -260,58 +116,28 @@ id="totalEuro">
 
 </section>
 
-<!-- =========================
-SUPPORT
-========================= -->
-
+<!-- SUPPORT -->
 <section class="social">
 
-<h2>
-Besoin d'aide ?
-</h2>
-
+<h2>Besoin d'aide ?</h2>
 <br>
 
-<a
-href="https://wa.me/2250102030405"
-target="_blank">
-
-WhatsApp
-
-</a>
-
-<a
-target="_blank"
-href="https://www.instagram.com/chez_djams_rondeurs">
-
+<a href="https://www.instagram.com/chez_djams_rondeurs" target="_blank">
 Instagram
-
 </a>
 
 </section>
 
-<!-- =========================
-FOOTER
-========================= -->
-
+<!-- FOOTER -->
 <footer>
 
-<p>
-DJAM'S RONDEURS © 2025
-</p>
-
-<p>
-Votre silhouette est notre préoccupation
-</p>
+<p>DJAM'S RONDEURS © 2025</p>
+<p>Votre silhouette est notre préoccupation</p>
 
 </footer>
 
-<!-- =========================
-SCRIPTS
-========================= -->
-
+<!-- SCRIPTS -->
 <script src="js/products.js"></script>
-
 <script src="js/app.js"></script>
 
 <script>
@@ -320,264 +146,123 @@ SCRIPTS
 PANIER
 ========================= */
 
-const cart =
-getCart();
-
-const summary =
-document.getElementById(
-"cartSummary"
-);
+const cart = getCart();
+const summary = document.getElementById("cartSummary");
 
 let total = 0;
 
 /* =========================
-AFFICHAGE COMMANDE
+AFFICHAGE PANIER
 ========================= */
 
-if(cart.length === 0){
+if (cart.length === 0) {
 
 summary.innerHTML = `
-
-<p>
-Votre panier est vide.
-</p>
-
+<p>Votre panier est vide.</p>
 <br>
-
-<a
-href="boutique.html"
-class="btn btn-primary">
-
-Retour boutique
-
-</a>
-
+<a href="boutique.html" class="btn btn-primary">Retour boutique</a>
 `;
 
-}else{
+} else {
 
-cart.forEach(item=>{
+cart.forEach(item => {
 
-const subtotal =
-item.price * item.quantity;
-
+const subtotal = item.price * item.quantity;
 total += subtotal;
 
 summary.innerHTML += `
-
-<div
-style="
-margin-bottom:20px;
-">
-
-<h3>
-${item.name}
-</h3>
-
-<p>
-
-${item.quantity}
-x
-${item.price.toLocaleString()}
-FCFA
-
-</p>
-
-<strong>
-
-${subtotal.toLocaleString()}
-FCFA
-
-</strong>
-
+<div style="margin-bottom:20px;">
+<h3>${item.name}</h3>
+<p>${item.quantity} x ${item.price.toLocaleString()} FCFA</p>
+<strong>${subtotal.toLocaleString()} FCFA</strong>
 </div>
-
-<hr>
-
-<br>
-
+<hr><br>
 `;
 
 });
 
 }
 
-/* =========================
-TOTALS
-========================= */
+/* TOTALS */
+document.getElementById("totalFcfa").innerText =
+total.toLocaleString() + " FCFA";
 
-document.getElementById(
-"totalFcfa"
-).innerText =
-
-total.toLocaleString()
-+ " FCFA";
-
-document.getElementById(
-"totalEuro"
-).innerText =
-
-"≈ " +
-(total / 655.957)
-.toFixed(2)
-+ " €";
+document.getElementById("totalEuro").innerText =
+"≈ " + (total / 655.957).toFixed(2) + " €";
 
 /* =========================
-COMMANDE WHATSAPP
+PAIEMENT PAYDUNYA
 ========================= */
 
-document
-.getElementById(
-"checkoutForm"
-)
-.addEventListener(
-"submit",
-function(e){
+document.getElementById("checkoutForm").addEventListener("submit", async function(e){
 
 e.preventDefault();
 
-if(cart.length === 0){
-
-alert(
-"Votre panier est vide."
-);
-
+if (cart.length === 0) {
+alert("Panier vide");
 return;
-
 }
 
 /* CLIENT */
+const fullname = document.getElementById("fullname").value;
+const phone = document.getElementById("phone").value;
+const email = document.getElementById("email").value;
+const country = document.getElementById("country").value;
+const city = document.getElementById("city").value;
+const address = document.getElementById("address").value;
+const payment = document.getElementById("paymentMethod").value;
 
-const fullname =
-document.getElementById(
-"fullname"
-).value;
+/* BUTTON LOADING */
+const btn = document.querySelector("button[type='submit']");
+btn.innerText = "Redirection...";
+btn.disabled = true;
 
-const phone =
-document.getElementById(
-"phone"
-).value;
+try {
 
-const email =
-document.getElementById(
-"email"
-).value;
+const res = await fetch("/api/create-invoice", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+cart,
+total,
+customer: {
+fullname,
+phone,
+email,
+country,
+city,
+address,
+payment
+}
+})
+});
 
-const country =
-document.getElementById(
-"country"
-).value;
+const data = await res.json();
 
-const city =
-document.getElementById(
-"city"
-).value;
+if (data.success) {
+window.location.href = data.url;
+} else {
+alert("Erreur paiement");
+console.log(data);
+btn.innerText = "Valider ma commande";
+btn.disabled = false;
+}
 
-const address =
-document.getElementById(
-"address"
-).value;
-
-const payment =
-document.getElementById(
-"paymentMethod"
-).value;
-
-/* MESSAGE */
-
-let message =
-`🛒 NOUVELLE COMMANDE DJAM'S RONDEURS
-
-👤 CLIENT :
-Nom : ${fullname}
-Téléphone : ${phone}
-Email : ${email}
-
-📍 LIVRAISON :
-Pays : ${country}
-Ville : ${city}
-Adresse : ${address}
-
-💳 Paiement :
-${payment}
-
-====================
-
-📦 PRODUITS :
-`;
-
-cart.forEach(item=>{
-
-message += `
-
-• ${item.name}
-x${item.quantity}
-
-= ${(item.price * item.quantity)
-.toLocaleString()} FCFA
-`;
+} catch (err) {
+alert("Erreur serveur");
+console.log(err);
+btn.innerText = "Valider ma commande";
+btn.disabled = false;
+}
 
 });
 
-message += `
-
-====================
-
-💰 TOTAL :
-${total.toLocaleString()} FCFA
-
-Merci 🙏
-`;
-
-/* ENCODAGE */
-
-const encodedMessage =
-encodeURIComponent(message);
-
-/* NUMERO WHATSAPP */
-
-const whatsappNumber =
-"2250102030405";
-
-/* REDIRECTION */
-
-window.open(
-
-`https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
-
-"_blank"
-
-);
-
-/* RESET */
-
-localStorage.removeItem(
-"cart"
-);
-
+/* UPDATE CART COUNTER */
 updateCartCounter();
 
-});
-
 </script>
-
-<!-- =========================
-RESPONSIVE
-========================= -->
-
-<style>
-
-@media(max-width:900px){
-
-section div[style*="grid-template-columns"]{
-
-grid-template-columns:1fr !important;
-
-}
-
-}
-
-</style>
 
 </body>
 </html>
