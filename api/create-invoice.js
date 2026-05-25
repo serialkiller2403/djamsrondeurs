@@ -7,12 +7,16 @@ export default async function handler(req, res) {
 
   const { cart, total } = req.body;
 
+  if (!cart || !total) {
+    return res.status(400).json({ error: "Missing data" });
+  }
+
   try {
     const response = await axios.post(
       "https://app.paydunya.com/api/v1/checkout-invoice/create",
       {
         invoice: {
-          total_amount: total,
+          total_amount: Number(total),
           description: "Commande DJAM'S RONDEURS"
         }
       },
@@ -32,10 +36,10 @@ export default async function handler(req, res) {
       url: response.data.response_text
     });
 
-  } catch (err) {
+  } catch (error) {
     return res.status(500).json({
       success: false,
-      error: err.response?.data || err.message
+      error: error.response?.data || error.message
     });
   }
 }
