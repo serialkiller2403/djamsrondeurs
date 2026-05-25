@@ -24,29 +24,33 @@ export default async function handler(req, res) {
 
     // Requête PayDunya
     const response = await axios.post(
-      "https://app.paydunya.com/api/v1/checkout-invoice/create",
-      {
-        invoice: {
-          total_amount: Number(total),
-          description: "Commande DJAM'S RONDEURS"
-        },
-
-        customer: {
-          fullname: customer.fullname,
-          email: customer.email,
-          phone_number: customer.phone
-        }
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "PAYDUNYA-MASTER-KEY": process.env.MASTER_KEY,
-          "PAYDUNYA-PRIVATE-KEY": process.env.PRIVATE_KEY,
-          "PAYDUNYA-PUBLIC-KEY": process.env.PUBLIC_KEY,
-          "PAYDUNYA-TOKEN": process.env.TOKEN
-        }
-      }
-    );
+  "https://app.paydunya.com/api/v1/checkout-invoice/create",
+  {
+    store: {
+      name: "DJAM'S RONDEURS",
+      tagline: "Votre silhouette est notre préoccupation",
+      website_url: "https://djamsrondeurs.vercel.app"
+    },
+    invoice: {
+      total_amount: Number(total),
+      description: "Commande DJAM'S RONDEURS"
+    },
+    customer: {
+      fullname: customer.fullname,
+      email: customer.email,
+      phone_number: customer.phone
+    }
+  },
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "PAYDUNYA-MASTER-KEY": process.env.MASTER_KEY,
+      "PAYDUNYA-PRIVATE-KEY": process.env.PRIVATE_KEY,
+      "PAYDUNYA-PUBLIC-KEY": process.env.PUBLIC_KEY,
+      "PAYDUNYA-TOKEN": process.env.TOKEN
+    }
+  }
+);
 
     console.log("PAYDUNYA RESPONSE:", response.data);
 
