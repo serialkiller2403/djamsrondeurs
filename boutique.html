@@ -2,10 +2,11 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Boutique - DJAM'S RONDEUR</title>
+<title>Boutique - DJAM'S RONDEURS</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -22,6 +23,8 @@ body{
 background:#fff;
 }
 
+/* HEADER */
+
 header{
 background:#000;
 color:#fff;
@@ -29,18 +32,37 @@ padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
 height:80px;
 }
 
+nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
 nav a{
 color:white;
 text-decoration:none;
-margin:0 15px;
 font-size:18px;
 }
+
+/* PANIER */
+
+.cart-count{
+background:red;
+color:white;
+padding:4px 10px;
+border-radius:50px;
+font-size:14px;
+font-weight:bold;
+}
+
+/* TITRE */
 
 .page-title{
 text-align:center;
@@ -50,13 +72,23 @@ background:#f5f5f5;
 
 .page-title h1{
 font-size:45px;
+margin-bottom:10px;
 }
+
+.page-title p{
+font-size:18px;
+color:#555;
+}
+
+/* PRODUITS */
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 padding:40px;
+max-width:1400px;
+margin:auto;
 }
 
 .product{
@@ -64,7 +96,7 @@ background:white;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+transition:.3s;
 }
 
 .product:hover{
@@ -99,6 +131,8 @@ color:#666;
 margin-bottom:20px;
 }
 
+/* BOUTONS */
+
 .btn-panier,
 .btn-decouvrir{
 display:block;
@@ -110,6 +144,7 @@ cursor:pointer;
 font-size:16px;
 border-radius:8px;
 text-decoration:none;
+transition:.3s;
 }
 
 .btn-panier{
@@ -117,17 +152,194 @@ background:#0b7d35;
 color:white;
 }
 
+.btn-panier:hover{
+background:#095f29;
+}
+
 .btn-decouvrir{
 background:#000;
 color:white;
 }
+
+.btn-decouvrir:hover{
+background:#222;
+}
+
+/* STATISTIQUES */
+
+.stats-section{
+background:#f5f5f5;
+padding:60px 20px;
+margin-top:40px;
+}
+
+.stats-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.stat-box{
+padding:30px;
+border-radius:15px;
+text-align:center;
+color:white;
+}
+
+.green{
+background:#0b7d35;
+}
+
+.black{
+background:#000;
+}
+
+.stat-box h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.stat-box p{
+line-height:1.8;
+}
+
+/* PRESENTATION */
+
+.presentation{
+padding:70px 20px;
+text-align:center;
+max-width:1000px;
+margin:auto;
+}
+
+.presentation h2{
+font-size:40px;
+margin-bottom:25px;
+color:#0b7d35;
+}
+
+.presentation p{
+font-size:18px;
+line-height:2;
+color:#444;
+}
+
+/* LIVRAISON */
+
+.delivery{
+background:#000;
+color:white;
+padding:50px 20px;
+text-align:center;
+}
+
+.delivery h2{
+font-size:35px;
+margin-bottom:20px;
+}
+
+/* PAIEMENT */
+
+.payment{
+padding:60px 20px;
+text-align:center;
+background:#f5f5f5;
+}
+
+.payment h2{
+font-size:35px;
+margin-bottom:25px;
+}
+
+.payment-methods{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+font-size:22px;
+font-weight:bold;
+color:#0b7d35;
+}
+
+/* SUPPORT */
+
+.support{
+padding:70px 20px;
+text-align:center;
+}
+
+.support h2{
+font-size:35px;
+margin-bottom:25px;
+}
+
+.whatsapp-btn{
+display:inline-block;
+background:#25D366;
+color:white;
+padding:16px 35px;
+border-radius:10px;
+text-decoration:none;
+font-size:20px;
+font-weight:bold;
+}
+
+/* RESEAUX */
+
+.social{
+background:#000;
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+.social h2{
+font-size:35px;
+margin-bottom:25px;
+}
+
+.social-links{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.social-links a{
+color:white;
+text-decoration:none;
+font-size:22px;
+font-weight:bold;
+}
+
+/* FOOTER */
 
 footer{
 background:black;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.page-title h1{
+font-size:32px;
+}
+
+.products{
+padding:20px;
+}
+
 }
 
 </style>
@@ -136,187 +348,621 @@ margin-top:40px;
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <img src="images/logo.jpg" class="logo" alt="Logo">
 
 <nav>
+
 <a href="index.html">Accueil</a>
+
 <a href="boutique.html">Boutique</a>
-<a href="panier.html">Panier</a>
+
+<a href="panier.html">
+🛒 Panier
+(<span id="cart-count" class="cart-count">0</span>)
+</a>
+
 <a href="paiement.html">Paiement</a>
+
 </nav>
 
 </header>
 
+<!-- TITRE -->
+
 <section class="page-title">
+
 <h1>Notre Boutique</h1>
-<p>Découvrez nos produits exclusifs DJAM'S RONDEUR</p>
+
+<p>
+Découvrez nos produits exclusifs DJAM'S RONDEURS
+</p>
+
 </section>
+
+<!-- PRODUITS -->
 
 <section class="products">
 
 <!-- PRODUIT 1 -->
+
 <div class="product">
+
 <img src="images/produit1.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CURE BOBI</h3>
+
 <div class="price">30 000 FCFA</div>
+
 <div class="price-euro">≈ 45,73 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=1" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(1)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=1"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 2 -->
+
 <div class="product">
+
 <img src="images/produit2.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CURE BOOSTER BOBI</h3>
+
 <div class="price">30 000 FCFA</div>
+
 <div class="price-euro">≈ 45,73 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=2" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(2)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=2"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 3 -->
+
 <div class="product">
+
 <img src="images/produit3.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CURE AFRICA QUEEN</h3>
+
 <div class="price">55 000 FCFA</div>
+
 <div class="price-euro">≈ 83,85 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=3" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(3)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=3"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 4 -->
+
 <div class="product">
+
 <img src="images/produit4.jpg" alt="">
+
 <div class="product-content">
+
 <h3>SUPPOSITOIRE BBL</h3>
+
 <div class="price">50 000 FCFA</div>
+
 <div class="price-euro">≈ 76,22 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=4" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(4)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=4"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 5 -->
+
 <div class="product">
+
 <img src="images/produit5.jpg" alt="">
+
 <div class="product-content">
+
 <h3>GÉLULE 100% HANCHES</h3>
+
 <div class="price">10 000 FCFA</div>
+
 <div class="price-euro">≈ 15,24 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=5" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(5)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=5"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 6 -->
+
 <div class="product">
+
 <img src="images/produit6.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CRÈME KABATO</h3>
+
 <div class="price">5 000 FCFA</div>
+
 <div class="price-euro">≈ 7,62 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=6" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(6)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=6"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 7 -->
+
 <div class="product">
+
 <img src="images/produit7.jpg" alt="">
+
 <div class="product-content">
+
 <h3>SIROP TASSABA</h3>
+
 <div class="price">20 000 FCFA</div>
+
 <div class="price-euro">≈ 30,49 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=7" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(7)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=7"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 8 -->
+
 <div class="product">
+
 <img src="images/produit8.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CURE MAMAMIYA</h3>
+
 <div class="price">75 000 FCFA</div>
+
 <div class="price-euro">≈ 114,33 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=8" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(8)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=8"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 9 -->
+
 <div class="product">
+
 <img src="images/produit9.jpg" alt="">
+
 <div class="product-content">
+
 <h3>SIROP 3 EN 1</h3>
+
 <div class="price">30 000 FCFA</div>
+
 <div class="price-euro">≈ 45,73 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=9" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(9)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=9"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 10 -->
+
 <div class="product">
+
 <img src="images/produit10.jpg" alt="">
+
 <div class="product-content">
+
 <h3>SIROP TCHAPA BALAISE</h3>
+
 <div class="price">65 000 FCFA</div>
+
 <div class="price-euro">≈ 99,09 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=10" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(10)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=10"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 11 -->
+
 <div class="product">
+
 <img src="images/produit11.jpg" alt="">
+
 <div class="product-content">
+
 <h3>SIROP APOUTCHOU</h3>
+
 <div class="price">25 000 FCFA</div>
+
 <div class="price-euro">≈ 38,11 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=11" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(11)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=11"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 12 -->
+
 <div class="product">
+
 <img src="images/produit12.jpg" alt="">
+
 <div class="product-content">
+
 <h3>GUMMIE BOBARABA ORIGIGI</h3>
+
 <div class="price">25 000 FCFA</div>
+
 <div class="price-euro">≈ 38,11 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=12" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(12)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=12"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 <!-- PRODUIT 13 -->
+
 <div class="product">
+
 <img src="images/produit13.jpg" alt="">
+
 <div class="product-content">
+
 <h3>CURE MAA-BIO</h3>
+
 <div class="price">200 000 FCFA</div>
+
 <div class="price-euro">≈ 304,90 €</div>
-<button class="btn-panier">🛒 Ajouter au panier</button>
-<a href="produits/produit.html?id=13" class="btn-decouvrir">Découvrir</a>
+
+<button
+class="btn-panier"
+onclick="addToCart(13)"
+>
+🛒 Ajouter au panier
+</button>
+
+<a
+href="produits/produit.html?id=13"
+class="btn-decouvrir"
+>
+Découvrir
+</a>
+
 </div>
+
 </div>
 
 </section>
 
+<!-- STATISTIQUES -->
+
+<section class="stats-section">
+
+<div class="stats-container">
+
+<div class="stat-box green">
+
+<h2>35 jours</h2>
+
+<p>
+PROGRAMME INTENSIF CONÇU POUR DES RÉSULTATS RAPIDES
+</p>
+
+</div>
+
+<div class="stat-box black">
+
+<h2>FORME V ➜ FORME GUITARE</h2>
+
+<p>
+UNE SILHOUETTE SOIGNEUSEMENT PARFAITE,
+SANS EFFETS SECONDAIRES
+</p>
+
+</div>
+
+<div class="stat-box green">
+
+<h2>3000+</h2>
+
+<p>
+CLIENTES SATISFAITES PARTOUT DANS LE MONDE
+</p>
+
+</div>
+
+<div class="stat-box black">
+
+<h2>100%</h2>
+
+<p>
+SOINS TESTÉS ET APPROUVÉS PAR NOS CLIENTES,
+VÉRIFIÉS PAR UN CHIMISTE ET UN LABORATOIRE AGRÉÉ
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRESENTATION -->
+
+<section class="presentation">
+
+<h2>DJAM'S RONDEURS</h2>
+
+<p>
+
+Découvrez une sélection exclusive de cures,
+sirops, gummies, huiles, gélules et soins
+spécialement sélectionnés pour accompagner
+votre bien-être et mettre en valeur votre silhouette.
+
+<br><br>
+
+Notre engagement est de vous proposer des
+produits de qualité et une expérience d'achat
+simple, rapide et sécurisée.
+
+</p>
+
+</section>
+
+<!-- LIVRAISON -->
+
+<section class="delivery">
+
+<h2>
+Délais de livraison : 7 à 15 jours
+</h2>
+
+<p>
+Livraison rapide et sécurisée partout dans le monde.
+</p>
+
+</section>
+
+<!-- PAIEMENT -->
+
+<section class="payment">
+
+<h2>
+Moyens de paiement acceptés
+</h2>
+
+<div class="payment-methods">
+
+<span>Wave</span>
+<span>Orange Money</span>
+<span>PayPal</span>
+<span>Visa</span>
+<span>Mastercard</span>
+
+</div>
+
+</section>
+
+<!-- SUPPORT -->
+
+<section class="support">
+
+<h2>
+Support WhatsApp
+</h2>
+
+<a
+href="https://wa.me/message/SFC6Z5L7SCJPL1"
+target="_blank"
+class="whatsapp-btn"
+>
+
+Contacter le support WhatsApp
+
+</a>
+
+</section>
+
+<!-- RESEAUX -->
+
+<section class="social">
+
+<h2>
+Suivez-nous
+</h2>
+
+<div class="social-links">
+
+<a href="https://instagram.com" target="_blank">
+Instagram
+</a>
+
+<a href="#">
+Snapchat
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer>
-DJAM'S RONDEUR © 2025
+DJAM'S RONDEURS © 2025
 </footer>
+
+<!-- SCRIPT -->
 
 <script src="js/app.js"></script>
 
