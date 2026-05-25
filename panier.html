@@ -4,11 +4,16 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Panier - DJAM'S RONDEUR</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/style.css">
+<title>
+Panier | DJAM'S RONDEURS
+</title>
+
+<link rel="stylesheet"
+href="css/style.css">
 
 <style>
 
@@ -16,50 +21,52 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Georgia,"Times New Roman",serif;
+font-family:Georgia, "Times New Roman", serif;
 }
 
 body{
-background:#fff;
+background:#f5f5f5;
+color:#111;
 }
+
+/* HEADER */
 
 header{
 background:#000;
-color:#fff;
-padding:15px;
+padding:15px 20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
 height:80px;
 }
 
+nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+font-size:18px;
 }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
-
-h1{
-margin-bottom:30px;
-}
+/* PANIER */
 
 .cart-item{
 display:flex;
-align-items:center;
 gap:20px;
-background:#fff;
-border:1px solid #ddd;
-border-radius:10px;
-padding:15px;
+align-items:center;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+flex-wrap:wrap;
 margin-bottom:20px;
 }
 
@@ -67,101 +74,113 @@ margin-bottom:20px;
 width:120px;
 height:120px;
 object-fit:cover;
-border-radius:10px;
+border-radius:15px;
 }
 
-.cart-info{
-flex:1;
-}
+/* QUANTITE */
 
-.cart-info h3{
-margin-bottom:10px;
-}
-
-.qty{
+.quantity{
 display:flex;
 align-items:center;
 gap:10px;
-margin-top:10px;
 }
 
-.qty button{
-width:35px;
-height:35px;
+.quantity button{
+width:40px;
+height:40px;
 border:none;
+background:#000;
+color:white;
+font-size:22px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quantity button:hover{
 background:#0b7d35;
-color:white;
-font-size:18px;
-cursor:pointer;
 }
 
-.remove{
-background:#d60000;
-color:white;
-border:none;
-padding:10px 15px;
-cursor:pointer;
-border-radius:5px;
+.quantity input{
+width:60px;
+height:40px;
+text-align:center;
+border:2px solid #ddd;
+border-radius:8px;
+font-size:18px;
 }
+
+/* RESUME */
 
 .summary{
-margin-top:40px;
-background:#f7f7f7;
-padding:25px;
-border-radius:10px;
-}
-
-.summary h2{
-margin-bottom:15px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 .total{
-font-size:26px;
+font-size:30px;
 font-weight:bold;
 color:#0b7d35;
-margin:15px 0;
+margin-top:10px;
 }
 
-.actions{
-margin-top:20px;
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-}
+/* BOUTONS */
 
-.actions a,
-.actions button{
-padding:15px 25px;
+.btn{
+padding:14px 22px;
 border:none;
+border-radius:10px;
 text-decoration:none;
 cursor:pointer;
-border-radius:8px;
-font-size:16px;
+font-weight:bold;
+transition:.3s;
+display:inline-block;
 }
 
-.pay{
+.btn-primary{
 background:#0b7d35;
 color:white;
 }
 
-.clear{
+.btn-primary:hover{
+background:#095f29;
+}
+
+.btn-dark{
 background:#000;
 color:white;
 }
 
-.empty{
-text-align:center;
-padding:50px;
-font-size:22px;
-color:#666;
+.btn-dark:hover{
+background:#222;
 }
 
+/* FOOTER */
+
 footer{
-margin-top:60px;
-background:#000;
+background:black;
 color:white;
 text-align:center;
 padding:20px;
+margin-top:40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.cart-item{
+flex-direction:column;
+text-align:center;
+}
+
 }
 
 </style>
@@ -170,119 +189,335 @@ padding:20px;
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
-<img src="images/logo.jpg" class="logo">
+<img
+src="images/logo.jpg"
+class="logo"
+alt="DJAM'S RONDEURS">
 
 <nav>
 
-<a href="index.html">Accueil</a>
-<a href="boutique.html">Boutique</a>
-<a href="paiement.html">Paiement</a>
+<a href="index.html">
+Accueil
+</a>
+
+<a href="boutique.html">
+Boutique
+</a>
+
+<a href="panier.html">
+
+🛒 Panier
+(<span id="cart-count">0</span>)
+
+</a>
+
+<a href="paiement.html">
+Paiement
+</a>
 
 </nav>
 
 </header>
 
-<div class="container">
+<!-- PANIER -->
 
-<h1>🛒 Mon Panier</h1>
+<section
+style="
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+">
 
-<div id="cartContainer"></div>
+<h1
+style="
+margin-bottom:40px;
+text-align:center;
+">
 
-<div id="summary" class="summary" style="display:none">
+🛒 Mon Panier
 
-<h2>Récapitulatif</h2>
+</h1>
 
-<p>Total en FCFA :</p>
+<!-- LISTE PRODUITS -->
 
-<div class="total" id="totalFcfa"></div>
+<div
+id="cartContainer"
+style="
+display:flex;
+flex-direction:column;
+gap:20px;
+">
 
-<p>Total en Euro :</p>
+</div>
 
-<div class="total" id="totalEuro"></div>
+<!-- RESUME -->
 
-<div class="actions">
+<div
+id="summary"
+class="summary"
+style="
+margin-top:40px;
+display:none;
+">
 
-<a href="paiement.html" class="pay">
-Passer ma commande
+<h2>
+Résumé de la commande
+</h2>
+
+<br>
+
+<p>
+Total en FCFA
+</p>
+
+<div
+class="total"
+id="totalFcfa">
+
+0 FCFA
+
+</div>
+
+<br>
+
+<p>
+Total en Euro
+</p>
+
+<div
+class="total"
+id="totalEuro">
+
+0 €
+
+</div>
+
+<!-- ACTIONS -->
+
+<div
+style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:30px;
+">
+
+<a
+href="paiement.html"
+class="btn btn-primary">
+
+💳 Passer au paiement
+
 </a>
 
-<button class="clear" onclick="clearCart()">
-Vider le panier
+<button
+class="btn btn-dark"
+onclick="clearCart()">
+
+🗑️ Vider le panier
+
 </button>
 
 </div>
 
 </div>
 
-</div>
+</section>
+
+<!-- CONTINUER ACHATS -->
+
+<section
+style="
+text-align:center;
+padding:60px 20px;
+background:#fff;
+">
+
+<h2>
+Continuer vos achats
+</h2>
+
+<br>
+
+<p>
+
+Découvrez encore plus de produits
+DJAM'S RONDEURS.
+
+</p>
+
+<br><br>
+
+<a
+href="boutique.html"
+class="btn btn-primary">
+
+Voir la boutique
+
+</a>
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
 
-DJAM'S RONDEUR © 2025
+<p>
+DJAM'S RONDEURS © 2025
+</p>
+
+<p>
+Votre silhouette est notre préoccupation
+</p>
 
 </footer>
 
+<!-- SCRIPT -->
+
+<script src="js/app.js"></script>
+
 <script>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+/* =========================
+AFFICHAGE PANIER
+========================= */
 
-const cartContainer = document.getElementById("cartContainer");
+function renderCartPage(){
 
-const summary = document.getElementById("summary");
+const container =
+document.getElementById(
+"cartContainer"
+);
 
-function renderCart(){
+const summary =
+document.getElementById(
+"summary"
+);
 
-cartContainer.innerHTML="";
+const cart = getCart();
 
-if(cart.length===0){
+container.innerHTML = "";
 
-cartContainer.innerHTML=`
-<div class="empty">
-Votre panier est vide.
+if(cart.length === 0){
+
+container.innerHTML = `
+
+<div
+style="
+text-align:center;
+padding:60px 20px;
+background:white;
+border-radius:20px;
+">
+
+<h2>
+Votre panier est vide
+</h2>
+
+<br><br>
+
+<a
+href="boutique.html"
+class="btn btn-primary">
+
+Découvrir la boutique
+
+</a>
+
 </div>
+
 `;
 
-summary.style.display="none";
+summary.style.display = "none";
 
 return;
 
 }
 
-let total=0;
+let total = 0;
 
 cart.forEach((item,index)=>{
 
-let subtotal=item.price*item.quantity;
+const subtotal =
+item.price * item.quantity;
 
-total+=subtotal;
+total += subtotal;
 
-cartContainer.innerHTML+=`
+container.innerHTML += `
 
 <div class="cart-item">
 
-<img src="${item.image}" alt="">
+<img
+src="${item.image}"
+alt="${item.name}">
 
-<div class="cart-info">
+<div style="flex:1;">
 
-<h3>${item.name}</h3>
+<h3>
+${item.name}
+</h3>
 
-<p>${item.price.toLocaleString()} FCFA</p>
+<br>
 
-<div class="qty">
+<p>
 
-<button onclick="decrease(${index})">-</button>
+Prix :
+<strong>
 
-<span>${item.quantity}</span>
+${item.price.toLocaleString()}
+FCFA
 
-<button onclick="increase(${index})">+</button>
+</strong>
+
+</p>
+
+<br>
+
+<div class="quantity">
+
+<button
+onclick="decreaseQty(${index})">
+
+−
+
+</button>
+
+<input
+type="text"
+value="${item.quantity}"
+readonly>
+
+<button
+onclick="increaseQty(${index})">
+
++
+
+</button>
 
 </div>
 
+<br>
+
+<p>
+
+Sous-total :
+<strong>
+
+${subtotal.toLocaleString()}
+FCFA
+
+</strong>
+
+</p>
+
 </div>
 
-<button class="remove"
+<button
+class="btn btn-dark"
 onclick="removeItem(${index})">
 
 Supprimer
@@ -295,68 +530,38 @@ Supprimer
 
 });
 
-summary.style.display="block";
+summary.style.display = "block";
 
-document.getElementById("totalFcfa").innerText =
-total.toLocaleString()+" FCFA";
+document.getElementById(
+"totalFcfa"
+).innerText =
 
-document.getElementById("totalEuro").innerText =
-(total/655.957).toFixed(2)+" €";
+total.toLocaleString()
++ " FCFA";
 
-}
+document.getElementById(
+"totalEuro"
+).innerText =
 
-function increase(index){
-
-cart[index].quantity++;
-
-saveCart();
-
-}
-
-function decrease(index){
-
-if(cart[index].quantity>1){
-
-cart[index].quantity--;
-
-saveCart();
+"≈ " +
+(total / 655.957)
+.toFixed(2)
++ " €";
 
 }
 
-}
+/* INITIALISATION */
 
-function removeItem(index){
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
-cart.splice(index,1);
+renderCartPage();
 
-saveCart();
-
-}
-
-function clearCart(){
-
-if(confirm("Vider complètement le panier ?")){
-
-cart=[];
-
-saveCart();
+updateCartCounter();
 
 }
-
-}
-
-function saveCart(){
-
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
 );
-
-renderCart();
-
-}
-
-renderCart();
 
 </script>
 
