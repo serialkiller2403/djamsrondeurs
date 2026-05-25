@@ -2,344 +2,447 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJAM'S RONDEURS</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
 
-<title>DJAM'S RONDEUR</title>
+    <style>
+        .hero-header {
+            background: #000;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
 
-<link rel="stylesheet" href="css/style.css">
+        .hero-logo {
+            height: 150px;
+            margin-bottom: 20px;
+        }
 
-<style>
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
 
-.hero-header{
-background:#000;
-padding:30px 20px;
-text-align:center;
-color:white;
-}
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #f0f0f0;
+        }
 
-.hero-logo{
-height:140px;
-margin-bottom:20px;
-}
+        .top-nav {
+            background: #0b7d35;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
 
-.hero-title{
-font-size:3rem;
-margin-bottom:10px;
-letter-spacing:2px;
-}
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-.hero-subtitle{
-font-size:1.4rem;
-font-style:italic;
-color:#e5e5e5;
-}
+        .slider {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+        }
 
-.top-nav{
-background:#0b7d35;
-padding:15px;
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: 1s ease;
+        }
 
-.top-nav a{
-color:white;
-text-decoration:none;
-font-size:18px;
-font-weight:bold;
-}
+        .slide.active {
+            opacity: 1;
+        }
 
-.slider{
-position:relative;
-height:650px;
-overflow:hidden;
-}
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-opacity:0;
-transition:1s;
-}
+        .presentation {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
 
-.slide.active{
-opacity:1;
-}
+        .presentation h2 {
+            margin-bottom: 20px;
+        }
 
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+        .presentation p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
 
-.presentation{
-padding:80px 20px;
-text-align:center;
-max-width:1200px;
-margin:auto;
-}
+        .payment-section {
+            padding: 70px 20px;
+            background: #f8f8f8;
+            text-align: center;
+        }
 
-.presentation h2{
-margin-bottom:20px;
-}
+        .payment-section h2 {
+            margin-bottom: 30px;
+        }
 
-.presentation p{
-font-size:1.3rem;
-line-height:1.8;
-}
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
 
-.payment-section{
-padding:60px 20px;
-text-align:center;
-background:#f8f8f8;
-}
+        .payment-logos img {
+            height: 70px;
+            transition: .3s;
+        }
 
-.payment-logos{
-display:flex;
-justify-content:center;
-align-items:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:30px;
-}
+        .payment-logos img:hover {
+            transform: scale(1.08);
+        }
 
-.payment-logos img{
-height:70px;
-transition:.3s;
-}
+        .delivery-section {
+            padding: 30px 20px;
+            text-align: center;
+            background: #fff;
+        }
 
-.payment-logos img:hover{
-transform:scale(1.08);
-}
+        .delivery-section h2 {
+            color: #0b7d35;
+            font-size: 2rem;
+        }
 
-.social-section{
-padding:60px 20px;
-text-align:center;
-}
+        .whatsapp-support {
+            padding: 50px 20px;
+            text-align: center;
+            background: #ffffff;
+        }
 
-.social-links{
-margin-top:25px;
-}
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: .3s;
+        }
 
-.social-links a{
-display:inline-block;
-padding:15px 25px;
-margin:10px;
-background:black;
-color:white;
-text-decoration:none;
-border-radius:10px;
-}
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
 
-footer{
-background:black;
-color:white;
-text-align:center;
-padding:25px;
-}
+        .social-section {
+            padding: 70px 20px;
+            text-align: center;
+        }
 
-@media(max-width:768px){
+        .social-links {
+            margin-top: 20px;
+        }
 
-.hero-title{
-font-size:2rem;
-}
+        .social-links a {
+            display: inline-block;
+            padding: 14px 25px;
+            margin: 10px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: .3s;
+        }
 
-.hero-subtitle{
-font-size:1.1rem;
-}
+        .social-links a:hover {
+            background: #0b7d35;
+        }
 
-.slider{
-height:350px;
-}
+        .stats-section {
+            background: #000;
+            padding: 90px 20px;
+            color: white;
+        }
 
-.hero-logo{
-height:100px;
-}
+        .stats-container {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
 
-}
+        .stat-box {
+            background: #0b7d35;
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: .3s;
+        }
 
-</style>
+        .stat-box:hover {
+            transform: translateY(-8px);
+        }
 
+        .stat-box h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-box p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width:768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .slider {
+                height: 350px;
+            }
+
+            .hero-logo {
+                height: 100px;
+            }
+
+            .delivery-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- LOGO + MESSAGE -->
+    <!-- ENTÊTE -->
+    <section class="hero-header">
+        <img src="images/logo.jpg" alt="DJAM'S RONDEURS" class="hero-logo">
 
-<section class="hero-header">
+        <h1 class="hero-title">
+            BIENVENUE CHEZ DJAM'S RONDEURS
+        </h1>
 
-<img
-src="images/logo.jpg"
-alt="DJAM'S RONDEUR"
-class="hero-logo">
+        <p class="hero-subtitle">
+            Votre silhouette est notre préoccupation
+        </p>
+    </section>
 
-<h1 class="hero-title">
-BIENVENUE CHEZ DJAM'S RONDEUR
-</h1>
+    <!-- MENU -->
+    <nav class="top-nav">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
 
-<p class="hero-subtitle">
-Votre silhouette est notre préoccupation
-</p>
+        <a href="panier.html">
+            🛒 Panier (<span id="cart-count">0</span>)
+        </a>
 
-</section>
+        <a href="paiement.html">Paiement</a>
+    </nav>
 
-<!-- MENU -->
+    <!-- BANNIÈRES -->
+    <section class="slider">
 
-<nav class="top-nav">
+        <div class="slide active">
+            <img src="images/banner1.jpg" alt="">
+        </div>
 
-<a href="index.html">Accueil</a>
+        <div class="slide">
+            <img src="images/banner2.jpg" alt="">
+        </div>
 
-<a href="boutique.html">Boutique</a>
+        <div class="slide">
+            <img src="images/banner3.jpg" alt="">
+        </div>
 
-<a href="panier.html">
-🛒 Panier
-(<span id="cart-count">0</span>)
-</a>
+        <div class="slide">
+            <img src="images/banner4.jpg" alt="">
+        </div>
 
-<a href="paiement.html">Paiement</a>
+        <div class="slide">
+            <img src="images/banner5.jpg" alt="">
+        </div>
 
-</nav>
+    </section>
 
-<!-- SLIDER PUBLICITAIRE -->
+    <!-- STATISTIQUES -->
+    <section class="stats-section">
 
-<section class="slider">
+        <div class="stats-container">
 
-<div class="slide active">
-<img src="images/banner1.jpg" alt="">
-</div>
+            <div class="stat-box">
+                <h2>&lt; 35 jours</h2>
 
-<div class="slide">
-<img src="images/banner2.jpg" alt="">
-</div>
+                <p>
+                    PROGRAMME INTENSIF CONÇU POUR DES RÉSULTATS RAPIDES
+                </p>
+            </div>
 
-<div class="slide">
-<img src="images/banner3.jpg" alt="">
-</div>
+            <div class="stat-box">
+                <h2>FORME V ➜ FORME GUITARE</h2>
 
-<div class="slide">
-<img src="images/banner4.jpg" alt="">
-</div>
+                <p>
+                    UNE SILHOUETTE SOIGNEUSEMENT PARFAITE,
+                    SANS EFFETS SECONDAIRES
+                </p>
+            </div>
 
-<div class="slide">
-<img src="images/banner5.jpg" alt="">
-</div>
+            <div class="stat-box">
+                <h2>3000+</h2>
 
-</section>
+                <p>
+                    CLIENTES SATISFAITES PARTOUT DANS LE MONDE
+                </p>
+            </div>
 
-<!-- PRESENTATION -->
+            <div class="stat-box">
+                <h2>100%</h2>
 
-<section class="presentation">
+                <p>
+                    SOINS TESTÉS ET APPROUVÉS PAR NOS CLIENTES,
+                    VÉRIFIÉS PAR UN CHIMISTE ET UN LABORATOIRE AGRÉÉ
+                </p>
+            </div>
 
-<h2>DJAM'S RONDEUR</h2>
+        </div>
 
-<p>
+    </section>
 
-Découvrez une sélection de produits spécialement conçus
-pour accompagner votre bien-être et votre mise en valeur.
+    <!-- PRÉSENTATION -->
+    <section class="presentation">
 
-Notre gamme comprend des cures, sirops, gummies,
-crèmes et compléments sélectionnés avec soin afin
-de répondre à vos besoins.
+        <h2>DJAM'S RONDEURS</h2>
 
-Commandez facilement depuis notre boutique en ligne
-et profitez de plusieurs moyens de paiement sécurisés.
+        <p>
+            Découvrez une sélection exclusive de cures,
+            sirops, gummies, huiles, gélules et soins
+            spécialement sélectionnés pour accompagner
+            votre bien-être et mettre en valeur votre silhouette.
 
-</p>
+            Notre engagement est de vous proposer des produits
+            de qualité et une expérience d'achat simple,
+            rapide et sécurisée.
+        </p>
 
-</section>
+    </section>
 
-<!-- MOYENS DE PAIEMENT -->
+    <!-- DELAIS LIVRAISON -->
+    <section class="delivery-section">
+        <h2>
+            Délais de livraison : 7 à 15 jours
+        </h2>
+    </section>
 
-<section class="payment-section">
+    <!-- PAIEMENTS -->
+    <section class="payment-section">
 
-<h2>Nos moyens de paiement</h2>
+        <h2>Moyens de paiement acceptés</h2>
 
-<div class="payment-logos">
+        <div class="payment-logos">
+            <img src="images/wave.png" alt="Wave">
+            <img src="images/orange-money.png" alt="Orange Money">
+            <img src="images/paypal.png" alt="PayPal">
+            <img src="images/visa.png" alt="Visa">
+            <img src="images/mastercard.png" alt="Mastercard">
+        </div>
 
-<img src="images/wave.png" alt="Wave">
+    </section>
 
-<img src="images/orange-money.png" alt="Orange Money">
+    <!-- SUPPORT WHATSAPP -->
+    <section class="whatsapp-support">
 
-<img src="images/paypal.png" alt="PayPal">
+        <h2>Support WhatsApp</h2>
 
-<img src="images/visa.png" alt="Visa">
+        <a 
+            href="https://wa.me/message/SFC6Z5L7SCJPL1"
+            target="_blank"
+            class="whatsapp-btn"
+        >
+            Contacter le support WhatsApp
+        </a>
 
-<img src="images/mastercard.png" alt="MasterCard">
+    </section>
 
-</div>
+    <!-- RESEAUX SOCIAUX -->
+    <section class="social-section">
 
-</section>
+        <h2>Suivez-nous</h2>
 
-<!-- RESEAUX SOCIAUX -->
+        <div class="social-links">
 
-<section class="social-section">
+            <a target="_blank"
+                href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=qr">
+                Instagram
+            </a>
 
-<h2>Retrouvez-nous sur les réseaux sociaux</h2>
+            <a target="_blank"
+                href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI">
+                Snapchat
+            </a>
 
-<div class="social-links">
+        </div>
 
-<a
-target="_blank"
-href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=qr">
+    </section>
 
-Instagram
+    <!-- FOOTER -->
+    <footer>
+        <p>DJAM'S RONDEURS © 2025</p>
 
-</a>
+        <p>
+            Votre silhouette est notre préoccupation
+        </p>
+    </footer>
 
-<a
-target="_blank"
-href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI">
+    <script src="js/app.js"></script>
 
-Snapchat
+    <script>
+        const slides = document.querySelectorAll(".slide");
 
-</a>
+        let current = 0;
 
-</div>
+        setInterval(() => {
 
-</section>
+            slides[current].classList.remove("active");
 
-<footer>
+            current++;
 
-DJAM'S RONDEUR © 2025
+            if (current >= slides.length) {
+                current = 0;
+            }
 
-</footer>
+            slides[current].classList.add("active");
 
-<script src="js/app.js"></script>
-
-<script>
-
-/* Slider automatique */
-
-const slides =
-document.querySelectorAll('.slide');
-
-let current = 0;
-
-setInterval(() => {
-
-slides[current]
-.classList
-.remove('active');
-
-current++;
-
-if(current >= slides.length){
-
-current = 0;
-
-}
-
-slides[current]
-.classList
-.add('active');
-
-},4000);
-
-</script>
+        }, 4000);
+    </script>
 
 </body>
+
 </html>
