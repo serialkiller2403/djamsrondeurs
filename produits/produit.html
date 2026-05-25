@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Détail Produit - DJAM'S RONDEUR</title>
+<title>Produit - DJAM'S RONDEURS</title>
 
 <link rel="stylesheet" href="../css/style.css">
 
@@ -16,162 +16,244 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Georgia,"Times New Roman",serif;
+font-family:Georgia, "Times New Roman", serif;
 }
 
 body{
-background:#fff;
+background:#f5f5f5;
+color:#111;
 }
+
+/* HEADER */
 
 header{
 background:#000;
-color:white;
-padding:15px;
+padding:15px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
-height:80px;
+height:75px;
+}
+
+nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+font-size:18px;
 }
 
-.container{
+/* PANIER */
+
+.cart-link{
+position:relative;
+}
+
+.cart-count{
+position:absolute;
+top:-10px;
+right:-12px;
+background:red;
+color:white;
+font-size:12px;
+font-weight:bold;
+width:22px;
+height:22px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* PAGE PRODUIT */
+
+.product-page{
 max-width:1200px;
-margin:auto;
-padding:50px 20px;
-}
-
-.product{
+margin:50px auto;
+padding:20px;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:50px;
-align-items:start;
+gap:40px;
+align-items:center;
+}
+
+.product-image{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .product-image img{
 width:100%;
 border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
+object-fit:cover;
 }
 
-.product-info h1{
-font-size:42px;
-margin-bottom:15px;
+.product-details{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-details h1{
+font-size:40px;
+margin-bottom:20px;
 }
 
 .price{
-font-size:30px;
+font-size:32px;
 font-weight:bold;
-color:#0c7a36;
+color:#0b7d35;
 margin-bottom:10px;
 }
 
 .price-euro{
-font-size:22px;
-color:#666;
-margin-bottom:30px;
+font-size:18px;
+color:#777;
+margin-bottom:25px;
 }
 
 .description{
-background:#f8f8f8;
-padding:25px;
-border-radius:10px;
+font-size:18px;
+line-height:1.8;
+margin-bottom:30px;
+white-space:pre-line;
+}
+
+/* QUANTITE */
+
+.quantity-box{
 margin-bottom:30px;
 }
 
-.description h3{
+.quantity-box h3{
+font-size:22px;
 margin-bottom:15px;
 }
 
-.description p{
-line-height:1.8;
-}
-
-.quantity{
+.quantity-controls{
 display:flex;
 align-items:center;
-margin-bottom:30px;
-}
-
-.quantity button{
-width:45px;
-height:45px;
-font-size:22px;
-border:none;
-background:#0c7a36;
-color:white;
-cursor:pointer;
-}
-
-.quantity input{
-width:80px;
-height:45px;
-text-align:center;
-font-size:18px;
-border:1px solid #ddd;
-}
-
-.actions{
-display:flex;
-flex-wrap:wrap;
 gap:15px;
 }
 
-.actions button,
-.actions a{
-padding:15px 25px;
+.qty-btn{
+width:50px;
+height:50px;
 border:none;
-text-decoration:none;
+border-radius:10px;
+background:#000;
+color:white;
+font-size:28px;
+font-weight:bold;
 cursor:pointer;
-border-radius:8px;
-font-size:16px;
+transition:0.3s;
 }
 
-.add{
-background:#0c7a36;
+.qty-btn:hover{
+background:#0b7d35;
+}
+
+#quantity{
+width:80px;
+height:50px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+}
+
+/* BOUTONS */
+
+.buttons{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.btn{
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+text-decoration:none;
+text-align:center;
+transition:0.3s;
+}
+
+.btn-cart{
+background:#0b7d35;
 color:white;
 }
 
-.cart{
+.btn-cart:hover{
+background:#086129;
+}
+
+.btn-payment{
 background:#000;
 color:white;
 }
 
-.order{
-background:#d89d00;
+.btn-payment:hover{
+background:#222;
+}
+
+.btn-whatsapp{
+background:#25D366;
 color:white;
 }
 
-.social{
-margin-top:50px;
+.btn-whatsapp:hover{
+transform:scale(1.03);
 }
 
-.social a{
-margin-right:15px;
-text-decoration:none;
-color:#0c7a36;
+/* MESSAGE */
+
+.message{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+background:#dfffe7;
+color:#0b7d35;
 font-weight:bold;
+display:none;
 }
+
+/* FOOTER */
 
 footer{
-margin-top:60px;
 background:#000;
 color:white;
 text-align:center;
 padding:20px;
+margin-top:60px;
 }
+
+/* RESPONSIVE */
 
 @media(max-width:900px){
 
-.product{
+.product-page{
 grid-template-columns:1fr;
+}
+
+.product-details h1{
+font-size:32px;
 }
 
 }
@@ -184,220 +266,397 @@ grid-template-columns:1fr;
 
 <header>
 
-<img src="../images/logo.jpg" class="logo">
+<img src="../images/logo.jpg" class="logo" alt="Logo">
 
 <nav>
+
 <a href="../index.html">Accueil</a>
+
 <a href="../boutique.html">Boutique</a>
-<a href="../panier.html">Panier</a>
+
+<a href="../panier.html" class="cart-link">
+🛒 Panier
+<span id="cart-count" class="cart-count">0</span>
+</a>
+
+<a href="../paiement.html">Paiement</a>
+
 </nav>
 
 </header>
 
-<div class="container">
-
-<div class="product">
+<section class="product-page">
 
 <div class="product-image">
 
-<img id="productImage" src="../images/produit1.jpg">
+<img 
+id="productImage"
+src="../images/produit1.jpg"
+alt="Produit"
+>
 
 </div>
 
-<div class="product-info">
+<div class="product-details">
 
-<h1 id="productName">Nom du produit</h1>
+<h1 id="productName">
+Produit
+</h1>
 
-<div class="price" id="productPrice"></div>
+<div class="price" id="productPrice">
+0 FCFA
+</div>
 
-<div class="price-euro" id="productEuro"></div>
+<div class="price-euro" id="productEuro">
+0 €
+</div>
 
-<div class="description">
-
-<h3>Description du produit</h3>
-
-<p id="productDescription">
-
-Description personnalisable du produit.
-
-Vous pourrez remplacer ce texte par les caractéristiques,
-les ingrédients, les conseils d'utilisation et les bénéfices
-réels du produit.
-
+<p class="description" id="productDescription">
+Description du produit
 </p>
 
+<div class="quantity-box">
+
+<h3>Choisir la quantité</h3>
+
+<div class="quantity-controls">
+
+<button type="button" class="qty-btn" id="minusBtn">
+-
+</button>
+
+<input
+type="number"
+id="quantity"
+value="1"
+min="1"
+readonly
+>
+
+<button type="button" class="qty-btn" id="plusBtn">
++
+</button>
+
 </div>
 
-<h3>Quantité</h3>
-
-<br>
-
-<div class="quantity">
-
-<button onclick="decrease()">−</button>
-
-<input type="text" id="qty" value="1" readonly>
-
-<button onclick="increase()">+</button>
-
 </div>
 
-<div class="actions">
+<div class="buttons">
 
-<button class="add">
+<button class="btn btn-cart" id="addToCartBtn">
 🛒 Ajouter au panier
 </button>
 
-<a href="../panier.html" class="cart">
-Voir le panier
+<a href="../panier.html" class="btn btn-payment">
+🛒 Voir le panier
 </a>
 
-<a href="../paiement.html" class="order">
-Passer ma commande
+<a href="../paiement.html" class="btn btn-payment">
+💳 Passer au paiement
 </a>
 
-</div>
-
-<div class="social">
-
-<br>
-
-<a href="https://www.instagram.com/chez_djams_rondeurs?igsh=MWdkdzN5eHBteWJkaQ%3D%3D&utm_source=qr">
-Instagram
-</a>
-
-<a href="https://www.snapchat.com/@djamsrondeur?invite_id=shDwZX8k&locale=fr_CI&share_id=kVee4gkfSMeCa_ojhfm1Fg&sid=cd504d9aef8e463c962bdabfd6a8548e&locale=fr-CI">
-Snapchat
+<a
+href="https://wa.me/message/SFC6Z5L7SCJPL1"
+target="_blank"
+class="btn btn-whatsapp"
+>
+📱 Contacter le support WhatsApp
 </a>
 
 </div>
 
+<div class="message" id="message">
+Produit ajouté au panier avec succès ✅
 </div>
 
 </div>
 
-</div>
+</section>
 
 <footer>
-
-DJAM'S RONDEUR © 2025
-
+DJAM'S RONDEURS © 2025
 </footer>
 
 <script>
 
+/* ==============================
+   PRODUITS
+============================== */
+
 const products = {
 
 1:{
+id:1,
 name:"CURE BOBI",
-price:"30 000 FCFA",
-euro:"≈ 45,73 €"
+price:30000,
+euro:"≈ 45,73 €",
+image:"../images/produit1.jpg",
+description:"Posologie : Mélange de l’huile et crème application sur les seins matin et soir.\n\n✨ CURE BOBI – Raffermissement des seins ✨ Retrouvez une poitrine plus ferme, plus tonique et visiblement plus harmonieuse avec notre CURE BOBI."
 },
 
 2:{
+id:2,
 name:"CURE BOOSTER BOBI",
-price:"30 000 FCFA",
-euro:"≈ 45,73 €"
+price:30000,
+euro:"≈ 45,73 €",
+image:"../images/produit2.jpg",
+description:"Posologie : Mélange de l’huile et crème application sur les seins matin et soir.\n\n✨ CURE BOOSTER BOBI ✨ Offrez à votre poitrine une cure spécialement pensée pour l’augmentation des seins."
 },
 
 3:{
+id:3,
 name:"CURE AFRICA QUEEN",
-price:"55 000 FCFA",
-euro:"≈ 83,85 €"
+price:55000,
+euro:"≈ 83,85 €",
+image:"../images/produit3.jpg",
+description:"Posologie : Les deux sirops deux prises matin et soir, un bonbon gummies matin, midi et soir.\n\n✨ CURE AFRICA QUEEN ✨ Révélez vos courbes avec une cure pensée pour sublimer naturellement votre silhouette."
 },
 
 4:{
+id:4,
 name:"SUPPOSITOIRE BBL",
-price:"50 000 FCFA",
-euro:"≈ 76,22 €"
+price:50000,
+euro:"≈ 76,22 €",
+image:"../images/produit4.jpg",
+description:"Posologie : Insérer une boule chaque soir ou faire fondre deux boules chaque soir pour purger."
 },
 
 5:{
+id:5,
 name:"GÉLULE 100% HANCHES",
-price:"10 000 FCFA",
-euro:"≈ 15,24 €"
+price:10000,
+euro:"≈ 15,24 €",
+image:"../images/produit5.jpg",
+description:"Posologie : Un comprimé matin et soir.\n\nCe trésor est conçu pour l'élargissement au niveau des bassins, pour une silhouette parfaite."
 },
 
 6:{
+id:6,
 name:"CRÈME KABATO",
-price:"5 000 FCFA",
-euro:"≈ 7,62 €"
+price:5000,
+euro:"≈ 7,62 €",
+image:"../images/produit6.jpg",
+description:"Posologie : Massage au fesse uniquement les soirs.\n\nLa crème Fesse Molle permet le ramollissement des fesses en moins d'une semaine."
 },
 
 7:{
+id:7,
 name:"SIROP TASSABA",
-price:"20 000 FCFA",
-euro:"≈ 30,49 €"
+price:20000,
+euro:"≈ 30,49 €",
+image:"../images/produit7.jpg",
+description:"Posologie : Deux cuillères matin et soir.\n\nCe sirop a été conçu pour apporter du volume plus rapidement au postérieur, sans effets secondaires."
 },
 
 8:{
+id:8,
 name:"CURE MAMAMIYA",
-price:"75 000 FCFA",
-euro:"≈ 114,33 €"
+price:75000,
+euro:"≈ 114,33 €",
+image:"../images/produit8.jpg",
+description:"Posologie : Voir posologie Sirop Tassaba & 3 en 1 et Gummies.\n\n✨ CURE MAMAMIYA ✨ La cure pensée pour celles qui rêvent d’un volume harmonieux."
 },
 
 9:{
+id:9,
 name:"SIROP 3 EN 1",
-price:"30 000 FCFA",
-euro:"≈ 45,73 €"
+price:30000,
+euro:"≈ 45,73 €",
+image:"../images/produit9.jpg",
+description:"Posologie : Deux cuillères matin et soir.\n\nFavorise le développement des fesses et des hanches."
 },
 
 10:{
+id:10,
 name:"SIROP TCHAPA BALAISE",
-price:"65 000 FCFA",
-euro:"≈ 99,09 €"
+price:65000,
+euro:"≈ 99,09 €",
+image:"../images/produit10.jpg",
+description:"Posologie : Deux cuillères matin, midi et soir.\n\nLe sirop tchapa balaise a été conçu pour volume fessier rapide."
 },
 
 11:{
+id:11,
 name:"SIROP APOUTCHOU",
-price:"25 000 FCFA",
-euro:"≈ 38,11 €"
+price:25000,
+euro:"≈ 38,11 €",
+image:"../images/produit11.jpg",
+description:"Posologie : Deux cuillères matin et soir.\n\nCe sirop permet de prendre du poids de manière très naturelle."
 },
 
 12:{
+id:12,
 name:"GUMMIE BOBARABA ORIGIGI",
-price:"25 000 FCFA",
-euro:"≈ 38,11 €"
+price:25000,
+euro:"≈ 38,11 €",
+image:"../images/produit12.jpg",
+description:"Posologie : Un matin, midi et soir.\n\n✨ GUMMIES BOBARABA ORIGIGI ✨ Une cure au fenugrec pensée pour accompagner vos objectifs."
 },
 
 13:{
+id:13,
 name:"CURE MAA-BIO",
-price:"200 000 FCFA",
-euro:"≈ 304,90 €"
+price:200000,
+euro:"≈ 304,90 €",
+image:"../images/produit13.jpg",
+description:"Posologie : Voir la posologie du sirop TCHAPA + CURE AFRICA + SUPPO ET GUMMIES.\n\n✨ CURE MAA-BIO ✨ Découvrez la cure qui accompagne vos rondeurs."
 }
 
 };
 
-const params = new URLSearchParams(window.location.search);
+/* ==============================
+   RECUPERATION ID
+============================== */
 
-const id = params.get("id") || 1;
+const params =
+new URLSearchParams(window.location.search);
 
-const product = products[id];
+const productId =
+parseInt(params.get("id"));
 
-document.getElementById("productName").innerText = product.name;
-document.getElementById("productPrice").innerText = product.price;
-document.getElementById("productEuro").innerText = product.euro;
-document.getElementById("productImage").src = "../images/produit"+id+".jpg";
+if(!products[productId]){
 
-function increase(){
-
-let qty=document.getElementById("qty");
-
-qty.value=parseInt(qty.value)+1;
+window.location.href =
+"../boutique.html";
 
 }
 
-function decrease(){
+const product =
+products[productId];
 
-let qty=document.getElementById("qty");
+/* ==============================
+   AFFICHAGE PRODUIT
+============================== */
 
-if(parseInt(qty.value)>1){
+document.getElementById("productName").innerText =
+product.name;
 
-qty.value=parseInt(qty.value)-1;
+document.getElementById("productPrice").innerText =
+product.price.toLocaleString() + " FCFA";
+
+document.getElementById("productEuro").innerText =
+product.euro;
+
+document.getElementById("productImage").src =
+product.image;
+
+document.getElementById("productDescription").innerText =
+product.description;
+
+/* ==============================
+   QUANTITE
+============================== */
+
+const quantityInput =
+document.getElementById("quantity");
+
+document.getElementById("plusBtn").onclick =
+function(){
+
+quantityInput.value =
+parseInt(quantityInput.value) + 1;
+
+};
+
+document.getElementById("minusBtn").onclick =
+function(){
+
+let qty =
+parseInt(quantityInput.value);
+
+if(qty > 1){
+
+quantityInput.value =
+qty - 1;
 
 }
 
+};
+
+/* ==============================
+   COMPTEUR PANIER
+============================== */
+
+function updateCartCounter(){
+
+const counter =
+document.getElementById("cart-count");
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+
+cart.forEach(item=>{
+
+total += item.quantity;
+
+});
+
+counter.innerText = total;
+
 }
+
+/* ==============================
+   AJOUT PANIER
+============================== */
+
+document.getElementById(
+"addToCartBtn"
+).onclick = function(){
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+let quantity =
+parseInt(quantityInput.value);
+
+const existingProduct =
+cart.find(item =>
+item.id === product.id
+);
+
+if(existingProduct){
+
+existingProduct.quantity += quantity;
+
+}else{
+
+cart.push({
+
+id:product.id,
+name:product.name,
+price:product.price,
+image:product.image,
+quantity:quantity
+
+});
+
+}
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCartCounter();
+
+const message =
+document.getElementById("message");
+
+message.style.display = "block";
+
+setTimeout(function(){
+
+message.style.display = "none";
+
+},3000);
+
+};
+
+/* INITIALISATION */
+
+updateCartCounter();
 
 </script>
 
