@@ -1,5 +1,7 @@
 {
+  "name": "djamsrondeurs",
+  "version": "1.0.0",
   "dependencies": {
-    "paydunya": "^1.0.13"
+    "axios": "^1.6.0"
   }
 }
